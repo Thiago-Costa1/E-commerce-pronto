@@ -1,0 +1,65 @@
+﻿@model aspnetsite.Models.Colaborador
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Areas/Colaborador/Views/Shared/_LayoutLogin.cshtml";
+
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="~/css/loginColaborador2.css">
+    </head>
+    <body>  
+        <header>
+            <div class="container-logo">
+                <img src="~/Imagens/com-fundo.jpeg" alt="logo">
+            <a asp-area="" asp-controller="Home" asp-action="Index"><h4>Voltar a página inicial</h4></a>
+            </div>
+        </header>
+
+        <h1 style="text-align: center; margin-top: 100px; margin-bottom: 30px;">Colaborador</h1>
+        <div class="page">
+            <div class="card">
+                <form method="post" class="login">
+                    <h2>Login</h2>
+                    <p>Digite os seus dados.</p>
+                    <input asp-for="Email" id="emailInput" class="campo" placeholder="Digite seu e-mail" type="email" required>
+                    <input asp-for="Senha" id="passwordInput" class="campo" placeholder="Digite sua senha" type="password" required>
+                    <button type="submit" class="btn btn-primary w-100">Acessar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Início do rodapé -->
+        <footer class="rodape" id="rodap">
+            <div class="container-omega">
+                <p>TechFlexNotebook Todos os direitos reservados&copy;</p>
+            </div>
+            <div class="imgg">
+                <img src="~/Imagens/com-fundo.jpeg" alt="logo" id="logo_rodape">
+            </div>
+            <div class="container_inputs">
+                <form action="send_email.php" method="post">
+                    <label for="email" id="form-lbl">Digite o seu e-mail para receber promoções!</label>
+                    <div class="inputs">
+                        <input type="email" id="email" name="email" placeholder="E-mail" required autocomplete="off">
+                        <input type="submit" id="input_botao" value="Cadastrar">
+                    </div>
+                </form>
+                <div class="social">
+                    <h4>Siga-nos em:</h4>
+                    <a href="https://www.instagram.com/techflex024?igsh=MWJvNGd1Zjg2YTc1Yg=="><img src="~/Imagens/instagram.png" alt="instagram"></a>
+                    <a href="https://wa.me/qr/PXOS347KIXH3A1"><img src="~/Imagens/whatsapp.png" alt="whatsapp"></a>
+                    <a href="https://www.facebook.com/profile.php?id=61561168657526"><img src="~/Imagens/facebook.png" alt="facebook"></a>
+                    <a href="https://www.linkedin.com/in/tech-flex-424a96314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="~/Imagens/linkedin.png" alt="linkedin"></a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Fim do rodapé -->
+
+    </body>
+</html>

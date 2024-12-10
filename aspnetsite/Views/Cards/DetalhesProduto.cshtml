@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFlex Notebook</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/cardOfici2.css">
+    <script src="~/js/card1f.js" defer></script>
+</head>
+<body>
+    <!-- Início do menu -->
+    <header>
+        <div class="container-logo">
+            <img src="~/Imagens/com-fundo.jpeg" alt="logo">
+            <a asp-controller="Home" asp-action="Index"><h4>Voltar a página inicial</h4></a>
+        </div>
+    </header>
+    <!-- Fim do menu -->
+    <main class="container-maximo">
+        <div class="container-global" id="container-1">
+            <div class="imagem-grande" id="box">
+                <img src="@Model.imagemNotebook1" alt="Imagem Principal" id="img-grande" class="img1">
+            </div>
+
+            <div class="zoom-container" id="zoom-container">
+                <img src="@Model.imagemNotebook1" alt="Zoom Imagem" id="zoom-img">
+            </div>
+
+            <div class="imagens">
+                @if (!string.IsNullOrEmpty(Model.imagemNotebook1))
+                {
+                    <div onclick="alterarImagem('@Model.imagemNotebook1')">
+                        <img src="@Model.imagemNotebook1" alt="Imagem Principal" class="imagem-pequena prim">
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.imagemNotebook2))
+                {
+                    <div onclick="alterarImagem('@Model.imagemNotebook2')">
+                        <img src="@Model.imagemNotebook2" alt="Imagem Adicional 1" class="imagem-pequena prim">
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.imagemNotebook3))
+                {
+                    <div onclick="alterarImagem('@Model.imagemNotebook3')">
+                        <img src="@Model.imagemNotebook3" alt="Imagem Adicional 3" class="imagem-pequena prim">
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.imagemNotebook4))
+                {
+                    <div onclick="alterarImagem('@Model.imagemNotebook4')">
+                        <img src="@Model.imagemNotebook4" alt="Imagem Adicional 4" class="imagem-pequena prim">
+                    </div>
+                }
+            </div>
+        </div>
+
+        <script>
+            function alterarImagem(url) {
+                document.getElementById("img-grande").src = url;
+                document.getElementById("zoom-img").src = url; // Atualiza também a imagem de zoom
+            }
+        </script>
+
+        <div class="container-global" id="container-2">
+            <h1 class="con-h1">
+                <textarea class="form-control descri" rows="3" readonly>@ViewBag.DescricaoDinamica</textarea>
+            </h1>
+            <div class="iiimg con-h1">
+                <img src="~/Imagens/garantia.png" alt="icone">
+            </div>
+            <hr id="hr-2">
+            <h3>Informações importantes</h3>
+            <div class="continuacao">
+                <h4 class="form-control bordadc">Cor: @Model.corNotebook</h4>
+                <h4 class="form-control bordadc">Tela: @Model.telaNotebook</h4>
+                <h4 class="form-control c4 bordadc">Memória RAM: @Model.memoriaNotebook</h4>
+            </div>
+            <div class="seguranca-extra">
+                <div class="seguranca-menor">
+                    <hr id="hr-1">
+                    <p>Segurança adicional</p>
+                    <div class="seguranca-minima">
+                        <input type="checkbox" name="" id="">
+                        <h5 class="con-h1">
+                            @if (ViewBag.GarantiaDisponivel)
+                            {
+                                <h5>
+                                    Extenda a garantia do seu equipamento em 1 ano por apenas
+                                    R$ @(ViewBag.ValorGarantia.ToString("F2")) Não perca essa oportunidade valiosa!
+                                </h5>
+                            }
+                            else
+                            {
+                                <h5>
+                                    Nesse momento não está disponível a extensão da garantia para esse produto.
+                                    Mas em breve poderá ser oferecida.
+                                </h5>
+                            }
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-global" id="container-3">
+            <div class="geral">
+                <div class="geral-interno">
+                    <h2>No pix: R$ @ViewBag.PrecoAVista.ToString("F2")</h2>
+                    <h3>ou até @ViewBag.NumeroParcelas x sem juros</h3>
+
+                    <h4 id="parcelas-button" onclick="toggleParcelas()">
+                        Confira as parcelas <span class="material-icons dropdown-icon">arrow_drop_down</span>
+                    </h4>
+                </div>
+                <!-- Início da tabela -->
+                <div class="parcelas" id="parcelas-table">
+                    <div class="parcelas-container">
+                        <table class="tabela-parcelas">
+                            <thead>
+                                <tr>
+                                    <th class="largura">Parcelas</th>
+                                    <th class="largura">Valor</th>
+                                    <th class="largura">Preço Final</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 2; i <= ViewBag.NumeroParcelas; i++)
+                                {
+                                    decimal valorParcela = (decimal)ViewBag.PrecoTotal / i;  // Divide pelo número de parcelas
+                                    decimal precoFinal = Math.Round(valorParcela * i, 2);
+
+                                    <tr>                                        
+                                        <td>@i x</td>
+                                        <td>R$ @valorParcela.ToString("#,##0.00")</td>
+                                        <td>R$ @precoFinal.ToString("#,##0.00")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Fim da tabela -->
+            <div class="container-compras">
+                <div class="carrinhoo">
+                    <a asp-controller="Carrinho" asp-action="AdicionarAoCarrinho" asp-route-id="@Model.codNotebook">
+                        <button type="button" id="salvar-carrinho">Colocar no carrinho</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+        <div class="container-informacoes">
+            <div class="container-inf">
+                <h1>
+                    Mais informações do produto
+                    <span class="material-icons dropdown-icon" id="span1">arrow_drop_down</span>
+                </h1>
+            </div>
+        </div>
+        <div class="container-interno">
+            <div class="container-medio">
+                <table class="container-tabela">
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Sistema Operacional</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.sistemaOperacionalNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Processador</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.processadorNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Placa de vídeo</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.placaVideoNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Tela</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.telaNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Memória</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.memoriaNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Armazenamento</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.armazenamentoNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Portas de conexão</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.portasConexaoNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Câmera</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.cameraNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Áudio</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.audioNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Rede e comunicação</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.redeComunicacaoNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Bateria</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.bateriaNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Fonte de alimentação</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.fonteAlimentacaoNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Peso</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.pesoNotebook</h4>
+                        </th>
+                    </tr>
+                    <tr class="tabela-coluna">
+                        <th class="largura-fixada">Incluído na caixa</th>
+                        <th>
+                            <h4 class="form-control bordadc">@Model.incluidoNaCaixaNotebook</h4>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    <!-- Início do rodapé -->
+    <footer class="rodape" id="rodap">
+        <div class="container-omega">
+            <p>TechFlexNotebook Todos os direitos reservados&copy;</p>
+        </div>
+        <div class="imgg">
+            <img src="~/Imagens/com-fundo.jpeg" alt="logo" id="logo_rodape">
+        </div>
+        <div class="container_inputs">
+            <form action="../send_email.php" method="post">
+                <label for="email" id="form-lbl">Digite o seu e-mail para receber promoções!</label>
+                <div class="inputs">
+                    <input type="email" id="email" name="email" placeholder="E-mail" required autocomplete="off">
+                    <input type="submit" id="input_botao" value="Cadastrar">
+                </div>
+            </form>
+            <div class="social">
+                <h4>Siga-nos em:</h4>
+                <a href="https://www.instagram.com/techflex024?igsh=MWJvNGd1Zjg2YTc1Yg=="><img src="~/Imagens/instagram.png" alt="instagram"></a>
+                <a href="https://wa.me/qr/PXOS347KIXH3A1"><img src="~/Imagens/whatsapp.png" alt="whatsapp"></a>
+                <a href="https://www.facebook.com/profile.php?id=61561168657526"><img src="~/Imagens/facebook.png" alt="facebook"></a>
+                <a href="https://www.linkedin.com/in/tech-flex-424a96314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="~/Imagens/linkedin.png" alt="linkedin"></a>
+            </div>
+        </div>
+    </footer>
+    <!-- Fim do rodapé -->
+</body>
+</html>

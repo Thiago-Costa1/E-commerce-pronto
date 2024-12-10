@@ -1,0 +1,55 @@
+﻿@model IEnumerable<aspnetsite.Models.Notebook>
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Painel do Gerente</h4>
+        </div>
+        <div class="card-body">
+            <!-- Botão de Cadastro de Notebook -->
+            <a class="btn btn-primary mb-3" asp-action="CadNotebook">Cadastrar Novo Notebook</a>
+
+            <!-- Tabela de Notebooks -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">@Html.DisplayNameFor(model => model.First().codNotebook)</th>
+                            <th scope="col">@Html.DisplayNameFor(model => model.First().nomeNotebook)</th>
+                            <th scope="col">@Html.DisplayNameFor(model => model.First().precoNotebook)</th>
+                            <th scope="col">@Html.DisplayNameFor(model => model.First().memoriaNotebook)</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Notebook notebook in Model)
+                        {
+                            <tr>
+                                <th scope="row">@notebook.codNotebook</th>
+                                <td>@notebook.nomeNotebook</td>
+                                <td>R$ @notebook.precoNotebook.ToString("F2")</td>
+                                <td>@notebook.memoriaNotebook</td>
+                                <td>
+                                    <a asp-action="Atualizar" asp-controller="Notebooks" asp-route-id="@notebook.codNotebook" class="btn btn-secondary btn-sm">Atualizar</a>
+                                    <a asp-action="Delete" asp-route-id="@notebook.codNotebook" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success mt-3">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

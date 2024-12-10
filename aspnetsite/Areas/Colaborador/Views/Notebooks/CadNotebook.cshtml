@@ -1,0 +1,165 @@
+@model aspnetsite.Models.Notebook
+@{
+    ViewData["Title"] = "Cadastrar Notebook";
+}
+
+
+<!-- Formulário de cadastro fora dos cards -->
+<div class="card shadow" style="margin-top: 20px;">
+    <div class="card-header bg-primary text-white text-center">
+        <h4>Painel do Gerente</h4>
+    </div>
+    <div class="card-body">
+        <!-- Tabela de Notebooks -->
+        <div class="table-responsive">
+            <table class="table table-bordered">                
+                <tbody id="edit-section">                    
+                    <form asp-controller="Notebooks" asp-action="CadNotebook" method="post" enctype="multipart/form-data">
+                        <input type="text" asp-for="codNotebook" style="display:none;" />
+                        <div class="globald">
+                            <div class="container" style="display: flex; width: 100%">
+                                <div class="primColuna" style="width:46%">
+                                    <div class="mb-3" style="display: flex; flex-direction: column;">
+                                        <label for="edit_nome" id="edit_nomeLabel" class="form-label">Nome</label>
+                                        <input type="text" asp-for="nomeNotebook" class="form-control" id="edit_nome" placeholder="Digite o nome" required>
+                                    </div>
+
+                                    <div class="mb-3 imagemLabelimg" style="display: flex; flex-direction: column;">
+                                        <label for="edit_Imagem" class="form-label">Imagem Principal</label>
+                                        <input type="file" asp-for="imagemNotebook1" accept="image/*" required>
+                                    </div>
+
+                                    <div class="mb-3 imagemLabelimg" style="display: flex; flex-direction: column;">
+                                        <label for="edit_ImagemAdicional1" class="form-label">Imagem Adicional 1</label>
+                                        <input type="file" asp-for="imagemNotebook2" accept="image/*" required>
+                                    </div>
+
+                                    <div class="mb-3 imagemLabelimg" style="display: flex; flex-direction: column;">
+                                        <label for="edit_ImagemAdicional2" class="form-label">Imagem Adicional 2</label>
+                                        <input type="file" asp-for="imagemNotebook3" accept="image/*" required>
+                                    </div>
+
+                                    <div class="mb-3 imagemLabelimg" style="display: flex; flex-direction: column;">
+                                        <label for="edit_ImagemAdicional3" class="form-label">Imagem Adicional 3</label>
+                                        <input type="file" asp-for="imagemNotebook4" accept="image/*" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_desconto" class="form-label">Desconto</label>
+                                        <input type="number" asp-for="descontoNotebook" step="0.01" class="form-control" id="edit_desconto" placeholder="Digite o desconto" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_Preco" class="form-label">Preço</label>
+                                        <input type="number" asp-for="precoNotebook" class="form-control" id="edit_Preco" placeholder="Digite o Preco" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label>Oferecer Garantia Estendida?</label>
+                                        <div>
+                                            <input type="radio" id="edit_garantiaSim" name="oferecerGarantia" value="sim" onclick="mostrarCampoValorGarantia(true)"> Sim
+                                            <input type="radio" id="edit_garantiaNao" name="oferecerGarantia" value="nao" onclick="mostrarCampoValorGarantia(false)"> Não
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3" id="edit_campoValorGarantia" style="display:none;">
+                                        <label for="edit_valorGarantia">Valor da Garantia Estendida</label>
+                                        <input type="number" asp-for="valorGarantiaNotebook" id="edit_valorGarantia" step="0.01" class="form-control" placeholder="Digite o valor da garantia" required>
+                                    </div>
+
+                                    <script>
+                                        function mostrarCampoValorGarantia(mostrar) {
+                                            document.getElementById('edit_campoValorGarantia').style.display = mostrar ? 'block' : 'none';
+                                        }
+                                    </script>
+
+                                    <div class="mb-3">
+                                        <label for="edit_cor" class="form-label">Cor</label>
+                                        <input type="text" asp-for="corNotebook" class="form-control" id="edit_cor" placeholder="Digite a cor" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_sistemaoperacional" class="form-label">Sistema Operacional</label>
+                                        <input type="text" asp-for="sistemaOperacionalNotebook" class="form-control" id="edit_sistemaoperacional" placeholder="Digite o sistema operacional" required>
+                                    </div>
+                               
+                                    <div class="mb-3">
+                                        <label for="edit_processador" class="form-label">Processador</label>
+                                        <input type="text" asp-for="processadorNotebook" class="form-control" id="edit_processador" placeholder="Digite o processador" required>
+                                    </div>
+                               
+                                    <div class="mb-3">
+                                        <label for="edit_placaVideo" class="form-label">Placa de Vídeo</label>
+                                        <input type="text" asp-for="placaVideoNotebook" class="form-control" id="edit_placaVideo" placeholder="Digite a placa de vídeo" required>
+                                    </div>
+                                </div>
+                                <div class="segColuna" style="width:50%; margin-left: 4%;">
+                                
+                                    <div class="mb-3">
+                                        <label for="edit_tela" id="tela_label" class="form-label">Tela</label>
+                                        <input type="text" asp-for="telaNotebook" class="form-control" id="edit_tela_unique" placeholder="Digite as especificações da tela" required>
+                                    </div>
+                                
+                                    <div class="mb-3">
+                                        <label for="edit_memoria" class="form-label">Memória RAM</label>
+                                        <input type="text" asp-for="memoriaNotebook" class="form-control" id="edit_memoria" placeholder="Digite a quantidade de memória RAM" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_armazenamento" class="form-label">Armazenamento</label>
+                                        <input type="text" asp-for="armazenamentoNotebook" class="form-control" id="edit_armazenamento" placeholder="Digite o tipo e capacidade de armazenamento" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_portas_unique_Conexao" class="form-label">Portas de Conexão</label>
+                                        <input type="text" asp-for="portasConexaoNotebook" class="form-control" id="edit_portas_unique_Conexao" placeholder="Digite as portas de conexão disponíveis" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_camera" id="camera_label" class="form-label">Câmera</label>
+                                        <input type="text" asp-for="cameraNotebook" class="form-control" id="edit_camera" placeholder="Digite as especificações da câmera" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_audio" class="form-label">Áudio</label>
+                                        <input type="text" asp-for="audioNotebook" class="form-control" id="edit_audio" placeholder="Digite as especificações de áudio" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_rede_Comunicacao" id="redeec" class="form-label">Rede e Comunicação</label>
+                                        <input type="text" asp-for="redeComunicacaoNotebook" class="form-control" id="edit_rede_Comunicacao" placeholder="Digite as informações de rede e comunicação" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_bateria" class="form-label">Bateria</label>
+                                        <input type="text" asp-for="bateriaNotebook" class="form-control" id="edit_bateria_unique" placeholder="Digite as especificações da bateria" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_fonteAlimentacao" class="form-label">Fonte de Alimentação</label>
+                                        <input type="text" asp-for="fonteAlimentacaoNotebook" class="form-control" id="edit_fonteAlimentacao" placeholder="Digite as especificações da fonte de alimentação" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_peso" class="form-label">Peso</label>
+                                        <input type="text" asp-for="pesoNotebook" class="form-control" id="edit_peso" placeholder="Digite o peso do produto" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="edit_incluidoNaCaixa" class="form-label">Incluído na Caixa</label>
+                                        <input type="text" asp-for="incluidoNaCaixaNotebook" class="form-control" id="edit_incluidoNaCaixa" placeholder="Digite o que está incluído na caixa" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Botões -->
+                            <div class="cadbotao" style="width: 100%; display: flex; justify-content: space-around; margin-top:30px;">
+                                <button style="width: 30%;" type="submit" class="btn btn-success botaoDuplo">Salvar</button>
+                                <a asp-area="Colaborador" asp-controller="Notebooks" asp-action="Index" style="width: 30%;" class="btn btn-danger botaoDuplo">Cancelar</a>
+                            </div>
+                        </div>
+                    </form>                 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

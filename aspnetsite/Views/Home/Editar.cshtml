@@ -1,0 +1,114 @@
+﻿@model aspnetsite.Models.PainelClienteViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edição</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Painel do Cliente</h4>
+                </div>
+                <div class="card-body">
+                    <!-- Navegação -->
+                    <ul class="nav nav-tabs" id="clienteTab" role="tablist">
+                        <li class="nav-item" role="presentation">                            
+                            <button class="nav-link active" id="conta-tab" data-bs-toggle="tab" data-bs-target="#conta" type="button" role="tab" aria-controls="conta" aria-selected="true">Minha Conta</button>
+                        </li>
+                    </ul>
+
+                    <!-- Conteúdo -->
+                    <div class="tab-content" id="clienteTabContent">                     
+                        <div class="tab-pane fade active show" id="conta" role="tabpanel" aria-labelledby="conta-tab">
+                            <h5 class="mt-4">Informações da Conta</h5>                      
+                            <form asp-action="Editar" asp-controller="Home" method="post">
+                            <input type="hidden" asp-for="Cliente.Id" />
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="Cliente.Nome" class="form-label">Nome</label>
+                                    <input type="text" asp-for="Cliente.Nome" class="form-control" placeholder="Seu nome completo" required />
+                                    <span asp-validation-for="Cliente.Nome" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="Cliente.Endereco" class="form-label">Endereco</label>
+                                    <input type="text" asp-for="Cliente.Endereco" class="form-control" placeholder="Rua/Avenida" required />
+                                    <span asp-validation-for="Cliente.Endereco" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="Cliente.Cidade" class="form-label">Cidade</label>
+                                <input type="text" asp-for="Cliente.Cidade" class="form-control" placeholder="Nome da cidade" required />
+                                    <span asp-validation-for="Cliente.Cidade" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="Cliente.Cep" class="form-label">CEP</label>
+                                    <input type="text" asp-for="Cliente.Cep" class="form-control" placeholder="Seu CEP" required />
+                                    <span asp-validation-for="Cliente.Cep" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="Cliente.Nascimento" class="form-label">Data de Nascimento</label>
+                                    <input type="date" asp-for="Cliente.Nascimento" class="form-control" required />
+                                <span asp-validation-for="Cliente.Nascimento" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label>Sexo</label>
+                                    <div class="d-flex">
+                                        <div class="form-check me-3">
+                                            <input class="form-check-input" type="radio" asp-for="Cliente.Sexo" value="M" />
+                                            <label class="form-check-label">Masculino</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" asp-for="Cliente.Sexo" value="F" />
+                                            <label class="form-check-label">Feminino</label>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="Cliente.Sexo" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="Cliente.CPF" class="form-label">CPF</label>
+                                    <input type="text" asp-for="Cliente.CPF" class="form-control" placeholder="000.000.000-00" required />
+                                    <span asp-validation-for="Cliente.CPF" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="Cliente.Telefone" class="form-label">Telefone</label>
+                                    <input type="tel" asp-for="Cliente.Telefone" class="form-control" placeholder="(00) 00000-0000" required />
+                                    <span asp-validation-for="Cliente.Telefone" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="Cliente.Email" class="form-label">E-mail</label>
+                                    <input type="email" asp-for="Cliente.Email" class="form-control" placeholder="email@exemplo.com" required />
+                                    <span asp-validation-for="Cliente.Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="Cliente.Senha" class="form-label">Senha</label>
+                                    <input type="password" asp-for="Cliente.Senha" class="form-control" placeholder="Digite uma senha" required />
+                                    <span asp-validation-for="Cliente.Senha" class="text-danger"></span>
+                                </div>
+
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-success">Salvar Alterações</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

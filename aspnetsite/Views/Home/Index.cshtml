@@ -1,0 +1,528 @@
+@model IEnumerable<aspnetsite.Models.Notebook>
+@using aspnetsite.Libraries.Login
+@inject aspnetsite.Libraries.Login.LoginCliente LoginCliente
+@inject aspnetsite.Libraries.Login.LoginColaborador _colaborador
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/stylepB8.css">
+    <script src="./js/index1op2.js" defer></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <title>TechFlex Notebook</title>
+</head>
+<body>
+    <!-- Início do header (menu) -->
+    <div class="containerNave">
+        <div class="logo-site">
+            <img src="./Imagens/com-fundo.jpeg" alt="logo" id="logo">
+        </div>
+        <div class="navbar-search">
+            <div class="input-group">
+                <input id="inpPesq" type="text" class="form-control" placeholder="Pesquisar...">
+                <button id="btnImg" class="btn btn-outline-secondary" type="button">
+                    <img src="./Imagens/pesquisar.png" alt="lupa" id="icone_lupa">
+                </button>
+            </div>
+        </div>
+        
+        @*Menu hamburguer*@
+        <div class="container-menu">
+            <div class="menu-hamburguer" onclick="toggleMenu()">
+                <div class="linha"></div>
+                <div class="linha"></div>
+                <div class="linha"></div>
+            </div>
+        </div>
+        
+        <div id="IconeDiv" class="pjunto d-flex align-items-center">
+            <!-- Ícone do usuário com interação para exibir opções -->
+            <a href="#" id="user-icon" class="text-decoration-none ms-3">
+                <i class="fas fa-user fa-lg"></i>
+            </a>
+            
+            <p class="mb-0 ms-2">
+                @if (LoginCliente.GetCliente() != null)
+                {
+                    @LoginCliente.GetCliente().Nome
+                }
+                else if (_colaborador.GetColaborador() != null)
+                {
+                    @_colaborador.GetColaborador().Nome
+                }
+                else
+                { 
+                    <p class="mb-0 ms-2" style="margin-top: 0.5px;">Login</p>
+                }
+            </p>
+
+            <!-- Caixa de opções escondida inicialmente -->
+            <div id="options-box" class="hidden bg-light border rounded p-3 shadow position-absolute mt-2" style="display: none;">
+                <p class="mb-2">Selecione uma opção:</p>
+
+                @if (ViewData["IsColaboradorLogado"] as bool? == true)
+                {<a asp-area="Colaborador" asp-controller="Home" asp-action="Painel" class="grad-link d-block mb-1">Painel Colaborador</a>
+                }
+                else
+                {
+                    @if (ViewData["IsClienteLogado"] as bool? == true)
+                    {<a asp-controller="Home" asp-action="PainelComum" class="grad-link d-block mb-1">Painel Cliente</a>
+                    }
+                    else
+                    {<a asp-controller="Home" asp-action="Login" class="grad-link d-block mb-1">Login Cliente</a>
+                     <a asp-area="Colaborador" asp-controller="Home" asp-action="Login" class="grad-link d-block mb-1">Login Colaborador</a>
+                    }
+                }
+            </div>
+        </div>
+
+        <a id="IconeCarrinhoo" href="/Carrinho/Carrinho" class="text-decoration-none ms-3">
+            <i class="fas fa-shopping-cart fa-lg"></i>
+        </a>
+
+        <!-- JavaScript para interação -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const userIcon = document.getElementById('user-icon');
+                const optionsBox = document.getElementById('options-box');
+
+                // Evento de clique para mostrar ou ocultar o menu de opções
+                userIcon.addEventListener('click', function (event) {
+                    event.preventDefault(); // Evita redirecionamento
+                    if (optionsBox.style.display === 'none' || optionsBox.style.display === '') {
+                        optionsBox.style.display = 'block';
+                    } else {
+                        optionsBox.style.display = 'none';
+                    }
+                });
+
+                // Oculta o menu de opções ao clicar fora dele
+                document.addEventListener('click', function (event) {
+                    if (!userIcon.contains(event.target) && !optionsBox.contains(event.target)) {
+                        optionsBox.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+
+    </div>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li class="nav-link services" onmouseover="showDropdown()" onmouseout="hideDropdown()">
+                <a href="#">Categorias<span class="material-icons dropdown-icon">arrow_drop_down</span></a>
+                <div class="drop-down-container">
+                    <ul class="drop-down">
+                        <li><a href="/Pesquisa/Pesquisa?category=estudante">Estudante</a></li>
+                        <li><a href="/Pesquisa/Pesquisa?category=gamer">Gamer</a></li>
+                        <li><a href="/Pesquisa/Pesquisa?category=trabalho">Trabalho</a></li>
+                    </ul>
+                    <ul class="drop-down">
+                        <li><a href="#api-card-um">Atendimento</a></li>
+                        <li><a href="#opiniao-cli">Opinião dos clientes</a></li>
+                        <li><a href="#duvidas_cliente">Dúvidas frequentes</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-link"><a asp-controller="Sobre" asp-action="Index">Sobre</a></li>
+            <li class="nav-link"><a href="#rodap">Redes sociais</a></li>
+            <li class="nav-link"><a href="#card2">Suporte</a></li>
+        </ul>
+
+
+
+
+        <!-- Versão Mobile -->
+        <div class="hambs-global xzs-a1">
+            <div class="hambs-interno xzs-a2">
+                <a href="#" id="user-icon-mobile" class="text-decoration-none ms-3 xzs-a3">
+                    <i class="fas fa-user fa-lg xzs-a4"></i>
+                </a>
+                <p class="mb-0 ms-2 xzs-a5">Login</p>
+            </div>
+            <div id="options-box-mobile" class="hidden bg-light border rounded p-3 shadow position-absolute xzs-a6" style="display: none; margin-top: 177px;">
+                <p class="mb-2 xzs-a7">Selecione uma opção:</p>
+
+                @if (ViewData["IsColaboradorLogado"] as bool? == true)
+                {
+                    <a asp-area="Colaborador" asp-controller="Home" asp-action="Painel" class="grad-link d-block  mb-1 xzs-a8">Painel Colaborador</a>
+                }
+                else
+                {
+                    @if (ViewData["IsClienteLogado"] as bool? == true)
+                    {
+                        <a asp-controller="Home" asp-action="PainelComum" class="grad-link d-block mb-1 xzs-a9">Painel Cliente</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Home" asp-action="Login" class="grad-link d-block mb-1 xzs-a10">Login Cliente</a>
+                        <a asp-area="Colaborador" asp-controller="Home" asp-action="Login" class="grad-link d-block mb-1 xzs-a11">Login Colaborador</a>
+                    }
+                }
+            </div>
+            <a id="iconeCar" href="/Carrinho/Carrinho" class="text-decoration-none ms-3 xzs-a12">
+                <i class="fas fa-shopping-cart fa-lg xzs-a13"></i>
+            </a>
+        </div>
+    </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Referenciando o ícone de usuário e a caixa de opções
+            const userIconMobile = document.getElementById('user-icon-mobile');
+            const optionsBoxMobile = document.getElementById('options-box-mobile');
+
+            // Evento de clique para mostrar ou ocultar o menu de opções
+            userIconMobile.addEventListener('click', function (event) {
+                event.preventDefault(); // Evita redirecionamento padrão
+                if (optionsBoxMobile.style.display === 'none' || optionsBoxMobile.style.display === '') {
+                    optionsBoxMobile.style.display = 'block';
+                } else {
+                    optionsBoxMobile.style.display = 'none';
+                }
+            });
+
+            // Evento para ocultar o menu ao clicar fora dele
+            document.addEventListener('click', function (event) {
+                if (!userIconMobile.contains(event.target) && !optionsBoxMobile.contains(event.target)) {
+                    optionsBoxMobile.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+  
+
+
+    <!-- Início do carrossel -->
+    <section class="slider">
+        <div class="slider-content">
+            <input type="radio" name="btn-radio" id="radio1">
+            <input type="radio" name="btn-radio" id="radio2">
+            <input type="radio" name="btn-radio" id="radio3">
+            <div class="slide-box primeiro">
+                <img class="img-desktop" src="./Imagens/1sliide-carrossel.png" alt="slide 1">
+            </div>          
+            <div class="slide-box">
+                <img class="img-desktop" src="./Imagens/2sliiide-carrossel.png" alt="slide 2">
+            </div>   
+            <div class="slide-box">
+                <img class="img-desktop" src="./Imagens/slide3.png" alt="slide 3">
+            </div>    
+            <div class="nav-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+            </div>
+            <div class="nav-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fim do carrossel -->
+
+    <!-- Início dos cards -->
+    <section class="section-card" id="section-gamer">
+        @foreach (var Notebook in Model)
+        {
+            <div class="card">
+                <img src="@Notebook.imagemNotebook1" alt="notebook">
+                <h3>@Notebook.nomeNotebook</h3>
+                <ul class="card-ul">
+                    <li>@Notebook.placaVideoNotebook</li>
+                    <li>@Notebook.processadorNotebook</li>
+                    <li>Memória RAM: @Notebook.memoriaNotebook</li>
+                </ul>
+                <h4>APENAS: R$ @Notebook.precoNotebook</h4>
+                <div class="fundo">
+                    <p>À Vista: R$ @(Notebook.precoNotebook - Notebook.descontoNotebook)</p>
+                    <h5>R$ @Notebook.descontoNotebook DE DESCONTO</h5>
+                </div>
+
+                <a asp-controller="Cards" asp-action="DetalhesProduto" asp-route-id="@Notebook.codNotebook">
+                    <button id="botao-card">Mais informações</button>
+                </a>
+                <a asp-controller="Carrinho" asp-action="AdicionarAoCarrinho" asp-route-id="@Notebook.codNotebook">
+                    <button id="botao-card">Colocar no carrinho</button>
+                </a>
+            </div>
+        }
+
+    </section>
+    <!-- Fim dos cards -->
+
+    <!-- Início da seção de pagamento -->
+
+    <section class="formas-pagamento">
+        <div class="container-pag">
+            <div class="largura-geral">
+                <div class="imagens-pagamento">   
+                </div>
+                <h1>PIX</h1>
+            </div>
+            <div class="largura-geral">
+                <div class="imagens-pagamento2">
+                </div>
+                <h1>Boleto</h1>
+            </div>
+        </div>
+        <div class="container-pag segundo">
+            <div class="largura-geral">
+                <div class="imagens-pagamento3">
+                </div>
+                <h1>PayPal</h1>
+            </div>
+            <div class="largura-geral">
+                <div class="imagens-pagamento4">
+                </div>
+                <h1>Débito/Crédito</h1>
+            </div>
+        </div>
+    </section>
+    <!-- Fim da seção de pagamento -->
+
+    <!-- Início da seção das imagens -->
+    <section class="imagens-site">
+        <div class="imagens01">
+            <div class="dentro">
+                <div class="conjunto">
+                    <h1>Vá a qualquer lugar</h1>
+                    <h3>Bateria que nunca te abandona</h3>
+                </div>
+            </div>
+        </div>
+        <div class="imagens02">
+            <div class="dentro">
+                <div class="conjunto">
+                    <h1>Gráficos no máximo </h1>
+                    <h3>Aproveite todo desempenho</h3>
+                </div>
+            </div>
+        </div>
+        <div class="imagens03">
+            <div class="dentro">
+                <div class="conjunto">
+                    <h1>Para todas situações</h1>
+                    <h3>Ideal para o trabalho</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fim da seção das imagens -->
+    
+    <!--Início do modal do atendimento -->
+
+    <div id="fundo_escuro" onclick="fecharModal(event)">
+        <form action="" method="get" >
+            <div class="container_modal" onclick="impedirPropagacao(event)">
+                <button class="fechar_modal" onclick="fecharModal(event)">X</button>
+                <h1>Escolha um horário e digite o seu número</h1>
+                <hr/>
+                <h3>Digite o horário em que você tenha disponibilidade para nós realizarmos o atendimento (por ligação ou mensagem)</h3>
+                <input type="text" id="txtHora" placeholder="00:00" pattern="([01][0-9]|2[0-3]):[0-5][0-9]">
+                <label for="txtHora"></label>
+                <h2>Agora digite o seu número:</h2>
+                <img src="./Imagens/icone_atendente.png" alt="atendente" id="atendente">
+                <img src="./Imagens/icone_telefone.png" alt="telefone" id="icone_telefone">
+                <input type="tel" name="tel" id="txtTelefone" placeholder="(XX) XXXX-XXXX" autocomplete="tel" pattern="^\(\d{2}\)\d{4,5}-\d{4}$">
+                <div>
+                    <button id="botao_enviar">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--Fim do modal do atendimento -->
+
+    <!-- Início do 2º modal (suporte) -->
+
+    <div id="fundo_escuro2" onclick="fecharModal2(event)">
+        <form>
+            <div class="container_modal2" onclick="impedirPropagacao(event)">
+                <button class="fechar_modal" onclick="fecharModal2(event)">X</button>
+                <h1>Descreva o seu problema</h1> 
+                <hr/>
+                <input type="text" placeholder="Seu nome" name="modal_nome" id="modal_nome">
+                <label for="modal_nome"></label>
+                <input type="text" placeholder="Seu e-mail" name="modal_email" id="modal_email">
+                <label for="modal_email"></label>
+                <div>
+                    <input type="text" placeholder="Assunto" name="modal_assunto" id="modal_assunto">
+                    <label for="modal_assunto"></label>
+                </div>
+                <textarea name="txtArea" id="txtArea" placeholder="Mensagem"></textarea>
+                <div class="btn" id="classBotao">
+                    <button id="botao_enviar2">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+   <!-- Fim do 2º modal (suporte) -->
+
+
+    <!-- Início dos modais em 2 cards -->
+
+    <div class="container-api">
+        <div class="api-cards" id="api-card-um" onclick="exibirModal()">
+            <img src="./Imagens/icon-telephone.png" alt="telefone" class="api-img-um">
+            <img src="./Imagens/icon_telephone_red.png" alt="telefone" class="api-img-um-red">
+            <h3>Atendimento</h3>
+        </div>
+        <div class="api-cards" id="card2" onclick="exibirModal2()">
+            <img src="./Imagens/icon-assistent.png" alt="suporte" class="api-img-um" id="api-img-assistente">
+            <img src="./Imagens/icon-atendente-red.png" alt="suporte" class="api-img-um-red" id="api-img-assistente-red">
+            <h3 id="api-h3">Suporte</h3>
+        </div>
+        <div class="localizacao" id="localiza">
+            <h1>Localização</h1>
+            <p>Estamos localizados na Rua Guaipá, 678 - Vila Leopoldina em São Paulo </br> CEP: 05089-000.</p>
+            <p><span>Estamos aberto:</span> segunda a sábado das 09:00 até as 17:00 horas.</p>
+        </div>
+    </div>
+    <!-- Fim dos modais em 2 cards -->
+    
+
+    <h1 id="duvidas_cliente">Dúvidas frequentes</h1>
+    <!-- Início da seção de dúvidas dos clientes -->
+    <section class="duvidas-cliente">
+        <div class="pergunta" id="pergunta1" onmouseover="mostrarPergunta('resposta1')" onmouseout="esconderPergunta('resposta1')" onclick="togglePergunta('resposta1')">
+            <h2 class="hPerg">+ Posso utilizar quais formas de pagamento?</h2>
+            <div class="resposta" id="resposta1">
+                <p>Você pode utilizar cartões de crédito, débito e PayPal como formas de pagamento.</p>
+            </div>
+        </div>
+        <div class="pergunta" id="pergunta2" onmouseover="mostrarPergunta('resposta2')" onmouseout="esconderPergunta('resposta2')" onclick="togglePergunta('resposta2')">
+            <h2 class="hPerg">+ Em quanto tempo irei receber a minha compra?</h2>
+            <div class="resposta" id="resposta2">
+                <p>Nos comprometemos em entregar no prazo máximo de 7 dias úteis.</p>
+            </div>
+        </div>
+        <div class="pergunta" id="pergunta3" onmouseover="mostrarPergunta('resposta3')" onmouseout="esconderPergunta('resposta3')" onclick="togglePergunta('resposta3')">
+            <h2 class="hPerg">+ Haverá algum custo adicional se eu me arrepender da compra?</h2>
+            <div class="resposta" id="resposta3">
+                <p>Não haverá nenhum custo adicional, nós cobriremos qualquer despesa.</p>
+            </div>
+        </div>
+        <div class="pergunta" id="pergunta4" onmouseover="mostrarPergunta('resposta4')" onmouseout="esconderPergunta('resposta4')" onclick="togglePergunta('resposta4')">
+            <h2 class="hPerg">+ Tenho quanto tempo de garantia?</h2>
+            <div class="resposta" id="resposta4">
+                <p>Todos os produtos possuem 12 meses de garantia.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Fim da seção dúvidas dos clientes -->
+
+
+    <!-- Início da seção opiniões dos clientes -->
+
+    <h1 id="opiniao-cli">Opinião dos clientes</h1>
+    <section class="section-opiniao">
+        <div class="master">
+            <div class="div-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+            </div>
+            <div class="card">
+                <p class="aux" id="aux1">O produto foi entregue bem embalado e no prazo esperado, voltarei sempre que precisar. </p>
+                <h4>Autor(a):</h4>
+                <h5>Karoline</h5>
+            </div>
+        </div>
+        <div class="master">
+            <div class="div-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+            </div>
+            <div class="card">
+                <p class="aux">Gostei muito das cores e da organização dos elementos no site, é bem agradável.</p>
+                <h4>Autor(a):</h4>
+                <h5>Natália</h5>
+            </div>
+        </div>
+        <div class="master">
+            <div class="div-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+            </div>
+            <div class="card">
+                <p class="aux">Aqui encontrei o melhor preço e economizei bastante, estou feliz e recomendo.</p>
+                <h4>Autor(a):</h4>
+                <h5>Vânia</h5>
+            </div>
+        </div>
+        <div class="master">
+            <div class="div-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+            </div>
+            <div class="card">
+                <p id="quarto-card-p" class="aux">Entrei em contato com o suporte e ainda no mesmo dia resolveram meu problema, valeu</p>
+                <h4>Autor(a):</h4>
+                <h5>Valdilene</h5>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fim da seção opiniões dos clientes -->
+
+    <!-- Início do rodapé -->
+    <footer class="rodape" id="rodap">
+        <div class="container-omega">
+            <nav class="navegaveis">
+                <ul>
+                    <li><a href="sobre.html">Sobre nós</a></li>
+                    <li><a href="#localiza">Localização</a></li>
+                    <li><a href="#card2">Suporte</a></li>
+                </ul>
+                <p>TechFlexNotebook Todos os direitos <br>reservados <span>&copy;</span></p>
+            </nav>
+        </div>
+        <div class="footer-logo">
+            <img src="./Imagens/com-fundo.jpeg" alt="logo" id="logo_rodape">
+        </div>
+        <div class="container_inputs">
+            <form asp-controller="Email" asp-action="SendEmail" method="post" >
+                <label for="email" id="form-lbl">Digite um e-mail e receba promoções!</label>
+                <div class="inputs">
+                    <input type="email" id="email" name="email" placeholder="E-mail" required autocomplete="off">
+                    <input type="submit" id="input_botao" value="Cadastrar">
+                </div>
+            </form>
+            <div class="social">
+                <h4>Siga-nos:</h4>
+                <a href="https://www.instagram.com/techflex024?igsh=MWJvNGd1Zjg2YTc1Yg=="><img src="./Imagens/instagram.png" alt="instagram"></a>
+                <a href="https://wa.me/qr/PXOS347KIXH3A1"><img src="./Imagens/whatsapp.png" alt="whatsapp"></a>
+                <a href="https://www.facebook.com/profile.php?id=61561168657526"><img src="./Imagens/facebook.png" alt="facebook"></a>
+                <a href="https://www.linkedin.com/in/tech-flex-424a96314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="./Imagens/linkedin.png" alt="linkedin"></a>
+            </div>    
+        </div>
+        <a href="#logo"><img src="./Imagens/seta-acima.png" alt="seta" id="seta"></a>
+    </footer>
+
+    <!-- Fim do rodapé -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

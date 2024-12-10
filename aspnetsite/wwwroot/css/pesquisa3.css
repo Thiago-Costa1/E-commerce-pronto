@@ -1,0 +1,596 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Titillium Web";
+}
+body
+{
+    background-color: rgb(221, 221, 221);
+    
+}
+
+header
+{
+    height: 103px;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+.container-logo
+{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.container-logo img
+{
+    width: 84%;
+    height: 75px;
+    object-fit: contain;
+}
+.container-logo a h4
+{
+    color: #000;
+}
+header a
+{
+    text-decoration: none;
+}
+.page
+{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 84.3vh;
+    
+}
+
+form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+#pResu 
+{
+    margin-top: 250px;
+}
+
+.campo
+{
+    padding: 15px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    transition: all linear 190ms;
+    font-size: 0.9em;
+    color: #444;
+    margin-bottom: 5px;
+    outline: none;
+}
+.campo::placeholder
+{
+    color: #666;
+}
+.campo:focus
+{
+    border-color:#090979 ;
+}
+.btn
+{
+    padding: 15px;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    margin-top: 20px;
+    border-radius: 7px;
+    background-color: #090979;
+    cursor: pointer;
+    transition: all linear 190ms;
+}
+.btn:hover
+{
+    transform: scale(1.04);
+    background-color: #1414db;
+}
+p
+{
+    font-size: 1em;
+    margin-left: 5%;
+
+}
+h2
+{
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #444;
+}
+
+
+.card {
+    width: 19%; 
+    border: 1px solid #000; 
+    margin-top: 110px;
+    padding: 10px;
+    margin-left: 5%;
+    display: inline-table; 
+    border-radius: 15px; 
+    text-align: center;
+    transition: border-color 0.5s, transform 0.5s; 
+    position: relative;
+    box-shadow: 0 20px 20px 0px rgba(0,0,0,0.1);
+    background-color: transparent;
+}
+
+.card:hover 
+{
+    background-color: #fff;
+    transform: scale(1.1);
+}
+
+.section-card
+{
+    margin-left: 8%;
+}
+.card-ul
+{
+    margin-top: 20px;
+    list-style-type: none;
+    margin-left: 22px;
+    position: relative;
+}
+
+.card-ul li
+{
+    text-align: left;
+    font-size: 1vw;
+    font-weight: bold;
+    margin-left: 3%;
+    position: relative; 
+}
+
+.card img
+{
+    margin-top: 4.5px; 
+    height: 122px; 
+    width:100%;
+    object-fit: contain;
+}
+
+.card:hover h4
+{
+    display: none;
+}
+
+.card h4
+{
+    margin-top: 35px;
+}
+
+.card button
+{    
+    display: none;
+    width: 70%;
+    height: 35px;
+    background-color: #df4141;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.2vw;
+}
+
+.card:hover button
+{
+    margin-top: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+#botao-card:hover
+{
+    background-color: #11b811;
+}
+
+.card:hover .fundo p, .card:hover .fundo h5 
+{
+    display: block;
+}
+
+.fundo p
+{
+    font-size: 1.2vw;
+    font-weight: bold;
+    display: none;
+    margin-top: 25px;
+    
+}
+
+.card .fundo h5 
+{
+    font-size: 0.7vw;
+    display: none;
+    
+    
+}
+
+.container-omega h1
+{
+    margin-top: 10vh;
+    text-align: center;
+   
+}
+
+#filter-container
+{
+    margin-top: 10px;
+    margin-left: 5%;
+}
+
+#results-container
+{
+    margin-bottom: 180px;
+}
+
+
+#mdlo
+{
+    margin-bottom: 33vh;
+}
+
+#search-query
+{
+    margin-top: 40px;
+}
+
+
+
+
+.rodape
+{
+    width: 100%;
+    height: 130px;  
+    border-top: 1px solid;
+    border-top: 1px solid;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+
+
+.rodape p
+{
+    font-size: 0.9vw;
+    margin-left: 0px;
+}
+
+.imgg
+{
+    width: 20%;
+    height: 65px;
+
+}
+
+#logo_rodape
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+}
+
+.inputs
+{
+    display: flex;
+    margin-bottom: 20px;
+    
+}
+
+.inputs input
+{
+    height: 25px;
+    border: 1px solid black
+}
+
+.inputs label
+{
+    display: none;
+}
+
+#input_email
+{
+    width: 50%;
+    margin-bottom: 0px !important;
+}
+
+#input_botao
+{
+    width: 153px;
+    background-color: #8326EF;
+    color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 0px;
+    border-left: none;
+}
+
+.social
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.social a img
+{
+    
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: #fff;
+    
+}
+
+
+
+
+
+/* Fim da estilização dos cards */ 
+
+
+@media only screen and (max-width: 650px) {
+    .container-logo
+    {
+        width: 53% !important;
+        object-fit: contain !important;
+
+    } 
+    .card
+    {
+        width: 73% !important;
+        margin-left: 13%;
+        margin-bottom: 9vh;
+    }
+
+    .card ul li 
+    {
+        font-size: 4vw;
+    }
+
+    .card button 
+    {
+        font-size: 5vw;
+    }
+
+    .fundo p 
+    {
+        font-size: 4.5vw;
+    }
+
+    .card .fundo h5 
+    {
+        font-size: 3.5vw;
+    }
+
+    #search-query
+    {
+        margin-left: 3%;
+        font-size: 1em;
+    }
+    
+    #filter-container
+    {
+        margin-left: 4%;
+        font-size: 1em;
+    }
+    
+    .container-omega h1 
+    {
+        margin-top: 10px;
+    }
+
+    
+    .rodape
+    {
+        width: 100%;
+        height: auto;  
+        border-top: 1px solid;
+        border-top: 1px solid;
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        font-weight: bold;
+        background-color: #fff;
+        flex-direction: column;
+    }
+
+    #results-container
+    {
+        margin-bottom: 0px;
+    }
+    
+    
+    .container-omega
+    {
+        width: 20%;
+    }
+    
+    .rodape p
+    {
+        font-size: 0.9vw;
+     
+    }
+    
+    .imgg
+    {
+        width: 20%;
+        height: 65px;
+    
+    }
+    
+    #logo_rodape
+    {
+        width: 100%;
+        height: 100%;
+        object-fit: contain !important;
+    }
+    
+    .inputs
+    {
+        display: flex;
+        margin-bottom: 20px;
+        
+    }
+    
+    .inputs input
+    {
+        height: 25px;
+        border: 1px solid black
+    }
+    
+    .inputs label
+    {
+        display: none;
+    }
+    
+    #input_email
+    {
+        width: 50%;
+        margin-bottom: 0px !important;
+    }
+    
+    #input_botao
+    {
+        width: 153px;
+        background-color: #8326EF;
+        color: #FFF;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 0px;
+        border-left: none;
+    }
+    
+    .social
+    {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    
+    .social a img
+    {
+        
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        color: #fff;
+        
+    }
+    
+    .container_inputs h5
+    {
+        margin-top: 10px;
+    }
+    
+    
+    .container-logo
+    {
+        width: 67% !important;
+        height: 75px;
+        margin-top: 14px;
+        object-fit: contain !important;
+    } 
+    
+    .container_inputs 
+    {
+        order: 1;
+    }
+    
+    .imgg 
+    {
+        order: 2;
+        width: 84%;
+        height: 75px;
+    }
+    
+    #logo_rodape
+    {
+        margin-top: 10px;
+    }
+    
+    .container-omega
+    {
+        order: 3;
+        width: 100%;
+    }
+    
+    .rodape p 
+    {
+        font-size: 2.4vw;
+        margin-top: 10px;
+    }        
+}
+    
+@media only screen and (min-width: 651px) and (max-width: 905px)
+{
+    .rodape p 
+    {
+        font-size: 1.4vw;
+    }
+
+    .container_inputs
+    {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 651px) and (max-width: 1115px)
+{
+    .card-ul li 
+    {
+        font-size: 1.9vw;
+    }
+
+    .card h3
+    {
+        font-size: 1.9vw;
+    }
+
+    .card 
+    {
+        width: 28%;
+    }
+}
+
+@media only screen and (min-width: 1601px) and (max-width: 4000px)
+{
+    #container-maximo
+    {
+        margin-top: 16vh;
+    }
+
+    .container-logo img
+    {
+        width: 77%;  
+    }
+
+    header
+    {
+        height: 155px;
+    }
+}

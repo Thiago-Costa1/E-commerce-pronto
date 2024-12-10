@@ -1,0 +1,44 @@
+﻿@model IEnumerable<aspnetsite.Models.Notebook>
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<h1>Produtos</h1>
+
+<a class="btn btn-primary" asp-action="CadNotebook">Cadastrar</a>
+<a href="~/Notebooks/CadNotebook">Cadastrar</a>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().codNotebook)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().nomeNotebook)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().precoNotebook)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().memoriaNotebook)</th>
+                
+
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Notebook notebook in Model)
+            {
+                <tr>
+                    <th scope="row">@notebook.codNotebook</th>
+                    <td>@notebook.nomeNotebook</td>
+                    <td>@notebook.precoNotebook</td>
+                    <td>@notebook.memoriaNotebook</td>
+                    
+                    <td>
+                        <a asp-action="Atualizar" asp-controller="Produto" asp-route-id="@notebook.codNotebook" class="btn btn-secondary">Atualizar</a>
+                        <a asp-action="Delete" asp-route-id="@notebook.codNotebook" class="btn btn-danger"
+                                    onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

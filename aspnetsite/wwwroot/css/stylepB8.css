@@ -1,0 +1,2255 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+*
+{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Titillium Web";        
+}
+body
+{
+    background-color: rgb(221,221,221);
+    color: #000;
+    font-weight: bold;
+}
+
+.container
+{
+    display:inline-block;
+    height:auto;
+        
+}
+
+
+
+/* Início da estilização da div (menu) */
+
+.containerNave {
+    display: flex;
+    background: #fff;
+    align-items: center;
+    height: 75px;
+}
+
+.logo-site
+{
+    width: 12%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+}
+.logo-site img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.navbar-search
+{
+    width: 50%;
+    margin-left: 54px;
+}
+
+.fas fa-user fa-l 
+{
+    cursor: pointer;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar ul {
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.hambs-global
+{
+    display: none;
+}
+
+
+.input-pesquisar {
+    width: 12%;
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.nav-link {
+    list-style: none;
+    height: 30%;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    background-color: #000000;
+    border-radius: 10px;
+    color: #fff;
+
+}
+
+.navbar ul {
+    font-size: 1.5vw;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.drop-down li {
+    list-style: none;
+    height: 30%;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+.drop-down-container {
+    position: absolute;
+    display: none;
+    background: antiquewhite;
+    color: #000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    z-index: 1000;
+    top: 100%;
+    left: 0vw;
+}
+
+.drop-down-container ul {
+    padding: 0.5rem 0;
+    margin: 0;
+}
+
+.drop-down-container .drop-down {
+    display: flex;
+    flex-direction: column;
+}
+
+.drop-down li a {
+    color: #000;
+}
+
+.drop-down li:hover a {
+    color: rgb(255, 255, 255);
+}
+
+.nav-link.services {
+    position: relative;
+}
+
+#cadA, #logB
+{
+    display: none;
+}
+
+
+.services a {
+    display: flex;
+    align-items: center;
+
+}
+
+.services .dropdown-icon {
+    font-size: 18px;
+    position: relative;
+    right: -5px;
+    transform: rotate(0deg);
+    transition: 0.3s ease-in-out all;
+}
+
+.services:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.drop-down li:hover {
+    background: #000;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+#inp_pesquisar {
+    background-color: #FFF;
+    height: 25px;
+    border-radius: 15px;
+    width: 98%;
+}
+
+.pesquisar {
+    display: flex;
+    align-items: center;
+    margin-left: 12%;
+    height: 110px;
+}
+
+.pesquisar input[type="text"]::placeholder {
+    color: #FFF;
+}
+
+.btn-div {
+    display: flex;
+    align-items: center;
+}
+
+.btn-div button {
+    height: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#icone_lupa {
+    width: 20px;
+    margin-left: 0.5%;
+}
+
+
+.pjunto {
+    width: 12%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pjunto p {
+    margin-top: -5px;
+}
+
+.pjunto img {
+    margin-top: 15px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+#options-box {
+    position: absolute;
+    width: 200px;
+    top: 69px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    z-index: 1000;
+}
+
+#options-box a {
+    display: block;
+    color: #007BFF;
+    text-decoration: none;
+    margin: 10px 0;
+    border: 1px solid #0000ff;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+
+#options-box p {
+    color: #000;
+}
+
+#options-box a:hover {
+    color: #ffffff;
+    background: linear-gradient(0deg, rgba(79,163,217,1) 5%, rgba(0,35,255,1) 87%);
+    transition: all linear 150ms;
+}
+
+
+.menu-hamburguer {
+    width: 30px;
+    cursor: pointer;
+    display: none; 
+    flex-direction: column;
+    justify-content: space-between;
+    height: 21px;
+    margin-right: 0px;
+}
+
+.linha {
+    height: 3px;
+    background-color: #000;
+    border-radius: 2px;
+}
+ 
+
+/* Início da estilização do carrossel */ 
+
+
+section.slider
+{
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 0 !important; /* Remove o preenchimento da seção (importante para sobrescrever outras regras) */
+    overflow: hidden;
+    z-index: 1;
+}
+
+.slider-content input, .img-mobile
+{
+    display: none;
+}
+
+.slide-box
+{
+    width: 25%; /* Largura de cada caixa de slide */
+    height: 28.1em;
+    position: relative;
+    text-align: center;
+    transition: 1s;
+}
+
+.slide-box img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.slider-content
+{
+    width: 400%; /* Largura total do conteúdo do carrossel (4 slides) */
+    height: auto;
+    display: flex;
+}
+
+.nav-manual, .nav-auto
+{
+    position: absolute;
+    width: 100%;
+    margin-top: 26.6em;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilo para os botões de navegação manual e os indicadores automáticos do carrossel */
+.nav-manual .manual-btn, .nav-auto div{
+    border: 1px solid rgb(30, 253, 0); 
+    padding: 10px;
+    border-radius: 50%; 
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Estilo para os botões de navegação manual e indicadores automáticos, exceto o último */
+.nav-manual .manual-btn:not(:last-child), .nav-auto div:not(:last-child){ 
+    margin-right: 10px; 
+}                
+
+
+/* Estilo para os indicadores automáticos quando um slide específico está marcado */
+#radio1:checked ~ .nav-auto .auto-btn1, #radio2:checked ~ .nav-auto .auto-btn2, #radio3:checked ~ .nav-auto .auto-btn3
+{     
+    background-color: rgb(30, 253, 0); 
+}     
+    
+/* Estilo para a posição dos slides no carrossel quando marcados */
+#radio1:checked ~ .primeiro{
+    margin-left: 0%; /* Mover para a primeira posição quando o slide 1 está marcado */
+}
+
+/* Mover para a segunda posição quando o slide 2 está marcado */
+#radio2:checked ~ .primeiro{
+    margin-left: -25%;
+}
+
+#radio3:checked ~ .primeiro{
+    margin-left: -50%;  /* Mover para a terceira posição quando o slide 3 está marcado */
+}
+
+
+/* Fim da estilização do carrossel */
+
+/* Início do cadastro */
+
+.globald {
+    background: #fff;
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-radius: 10px;
+}
+
+#nomeLabel, #tela, #cameraLa, #edit_nomeLabel, #tela_label, #camera_label
+{
+    margin-top: 15px;
+}
+
+#redeComunicacao, #redeec
+{
+    margin-top: 7px;
+}
+
+.imagemLabelimg {
+    display: flex;
+    flex-direction: column;
+}
+
+.segColuna .form-control 
+{
+    width: 100%;
+}
+
+.txtarea
+{
+    resize: none;
+}
+
+.botaoCadastrar {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 42px;
+    margin-bottom: 31px;
+}
+
+.form-control
+{
+    width:90%;
+}
+
+.cadbotao button {
+    margin-bottom: 34px;
+    margin-top: 20px;
+}
+
+.container {
+    font-size: 14px;
+    background-color: #fff;
+    display: flex;
+}
+
+.primColuna, .segColuna {
+    width: 50%;
+}
+
+.cadbotao {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+    width: 100%;
+}
+
+.botaoDuplo
+{
+    width: 25%;
+}
+
+/* Fim do cadastro */
+
+
+/* Início da estilização dos cards */ 
+.card {
+    width: 20%; 
+    border: 1px solid black; 
+    margin-top: 57px;
+    padding: 10px;
+    margin-left: 25px;
+    display: inline-table; 
+    border-radius: 15px; 
+    text-align: center;
+    box-sizing: border-box;
+    transition: border-color 0.5s, transform 0.5s; 
+    position: relative; 
+}
+
+#card-12 img
+{
+    object-fit: cover !important;
+    width: 82%;
+}
+
+#card-7 img 
+{
+    object-fit: cover !important;
+    width: 84%;
+
+}
+
+.value-timer-group
+{
+    border: 1px solid #000; 
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.card:hover .value-timer-group
+{
+    display: none;
+}
+
+#cronometro
+{
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-top: 41px;
+    position: absolute;
+    margin-left: -45%;
+}
+
+.card:hover #cronometro
+{
+    display: none;
+}
+
+.countdown img
+{
+    margin-left: 2%;
+    position: absolute;
+    margin-top: 10px;
+}
+
+#timer
+{
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.countdown
+{
+    margin-top: -7px;
+}
+
+#countdown-timer
+{
+    font-size: 16px;
+    color: #333; 
+}
+
+.placa-video
+{
+    transform: rotate(270deg);
+}
+
+.card:hover 
+{
+    background-color: #fff;
+    transform: scale(1.1);
+}
+
+
+.card:hover .icones_card img
+{
+    display: none;
+}
+.section-card
+{
+    margin-left: 8%;
+}
+.card-ul
+{
+    margin-top: 20px;
+    list-style-type: none;
+    margin-left: 22px;
+    position: relative;
+}
+
+.card-ul li
+{
+    text-align: left;
+    font-size: 1vw;
+    font-weight: bold;
+    margin-left: 3%;
+    position: relative; 
+}
+
+.card .icones_card
+{
+    display: grid;
+    position: absolute;
+    margin-top: 18px;
+}   
+
+.card .icones_card img
+{
+    width: 16px;
+    height: 16px;
+   
+    
+}
+
+.card img
+{
+    margin-top: 4.5px; 
+    height: 122px; 
+    width:100%;
+    object-fit: contain;
+}
+
+.card:hover h4
+{
+    display: none;
+}
+
+.card h4
+{
+    margin-top: 35px;
+}
+
+.value-timer-group h4
+{
+    margin: 0;
+
+}
+
+.card button
+{    
+    display: none;
+    width: 70%;
+    height: 35px;
+    background-color: #3b31c9;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.2vw;
+}
+
+.card:hover button
+{
+    margin-top: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+#botao-card:hover
+{
+    background-color: rgb(252,196,25);
+    color: #000;
+}
+
+.card:hover .fundo p, .card:hover .fundo h5 
+{
+    display: block;
+}
+
+.fundo p
+{
+    font-size: 1.2vw;
+    font-weight: bold;
+    display: none;
+    margin-top: 25px;
+}
+
+.card .fundo h5 
+{
+    font-size: 0.7vw;
+    display: none;    
+}
+
+/* Fim da estilização dos cards */ 
+
+
+/* Início da seção das imagens */
+.imagens-site
+{
+    width: 100%;
+    height: 36em;
+    margin-top: 3em;
+    position: relative;
+    display: flex;
+}
+.imagens01
+{
+    width: 33%;
+    height: 36em;
+    background-image: url(../Imagens/imagem-01.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.dentro
+{
+    backdrop-filter: brightness(75%);
+    width:100%;
+    height:100%;
+    text-align: center;
+    
+}
+.conjunto
+{
+    position: absolute;
+    width: 100%;
+    top: 15em;
+    color: #fff;
+}
+
+.imagens02 {
+    width: 35%;
+    height: 36em;
+    background-image: url(../Imagens/imagem-site2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.imagens02 .dentro
+{
+    backdrop-filter: brightness(85%);
+}
+
+.imagens03
+{
+    width: 32%;
+    height: 36em;
+    background-image: url(../Imagens/imagem3.jpg);
+    background-size: cover;
+    background-position: center; 
+}
+
+.imagens03 .dentro
+{
+    backdrop-filter: brightness(85%);
+}
+
+
+/* Fim da seção das imagens */
+
+
+/* Início da estilização do modal do Contato */
+
+/* Início do 1º modal */
+
+#fundo_escuro
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor escura com transparência */
+    z-index: 999;
+}
+
+.container_modal
+{
+    background-color: rgb(221,221,221);
+    width: 60%;
+    height: auto;
+    margin-left: 20%;
+    position: absolute;
+    border-radius: 8px;
+    margin-top: 5.5em;
+    
+}
+.fechar_modal
+{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: darkgray; /* Cor de fundo escura */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.fechar_modal:hover
+{
+    color: #f3f3f3;
+    border: 2px solid #ff0000;
+}
+
+.container_modal h1
+{
+    text-align: center;
+   
+    margin-top: 19px;
+}
+
+.container_modal h3
+{
+    
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 10px;
+}
+
+#txtHora, #txtTelefone
+{
+    margin-top: 10px;
+    margin-left: 45%;
+    border-radius: 5px;
+    
+}
+
+#txtHora
+{
+    width: 50px;
+    text-align: center;
+}
+
+.container_modal h2
+{
+
+    margin-top: 20px;
+    margin-left: 8%;
+}
+
+#txtTelefone
+{
+    margin-left: 0%;
+    position: absolute;
+    margin-top: 9px;
+}
+
+#botao_enviar
+{
+    width: 15%;
+    height: 35px;
+    background-color: #df4141;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.2vw;
+    margin-left: 18%;
+    margin-top: 8%;
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+
+#botao_enviar:hover
+{
+    background-color:transparent;
+    border: 2px solid black;
+    color: #000000;
+}
+
+#atendente
+{
+    width: 20%;
+    float: right;
+    margin-top: -1%;
+    margin-right: 12%;
+}
+
+#icone_telefone
+{
+    width: 20px;
+    margin-left: 10%;
+    margin-top: 12px;
+}
+/* Fim do 1º modal */
+
+
+/* Início do 2º modal */
+
+.container_modal2
+{
+    background-color: rgb(221,221,221);
+    width: 60%;
+    height: auto;
+    margin-left: 20%;
+    position: absolute;
+    border-radius: 8px;
+    margin-top: 3.5em;
+}
+.container_modal2 h1
+{
+    text-align: center;
+}
+#modal_nome, #modal_email
+{
+    width: 40%;
+    
+}
+#modal_nome, #modal_email, #modal_assunto
+{
+    margin-left: 6%;
+    margin-top: 30px;
+    border-radius: 10px;
+    height: 30px;
+}
+
+#modal_assunto
+{
+    margin-top: 15px;
+    width: 86.5%;
+}
+#txtArea
+{
+    margin-left: 6%;
+    border: 2px solid rgb(88, 84, 84);
+    border-radius: 10px;
+    height: 18em;
+    width: 86.5%;
+    margin-top: 15px;
+}
+
+.botaoSalvareExcluir
+{
+    width: unset;
+    margin-top: 20px;
+    margin-bottom: 24px;
+}
+
+#classBotao
+{
+    width: 100%;
+}
+
+#botao_enviar2
+{
+    width: 17%;
+    height: 35px;
+    background-color: #df4141;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.2vw;    
+    cursor: pointer;
+}
+
+#botao_enviar2:hover
+{
+    background-color:transparent;
+    border: 2px solid black;
+    color: #000000;
+}
+
+#txtArea
+{
+    resize: none;
+}
+
+#fundo_escuro2
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor escura com transparência */
+    z-index: 999;
+
+}
+
+
+/* Fim do 2º modal */
+
+
+
+/* Fim da estilização do modal do Contato */
+
+/* Início da estilização dos cards da api*/
+
+.container-api
+{
+    display: flex;
+    margin-left: 10%;
+    margin-top: 60px;
+    
+}
+
+.container-api iframe
+{
+    height: 160px;
+    width: 45%;
+    border-radius: 5px;
+}
+
+.api-cards
+{
+    width: 15%;
+    height: 155px;
+    background-color: #4A6EEF;
+    margin-left: 5%;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+}
+
+#api-card-um
+{
+    margin-left: 8.5%;
+    cursor: pointer;
+}
+
+.api-cards:hover
+{
+    color: #ff0000;
+}
+
+.api-img-um, .api-img-um-red
+{ 
+    height: 80px; 
+    margin-top: 32px; 
+}
+
+.api-cards:hover .api-img-um, #api-img-dois-red, .api-img-um-red
+{
+    display: none; 
+    
+}
+.api-cards:hover .api-img-um-red
+{
+    display: inline-block; 
+}
+
+#api-img-assistente, #api-img-assistente-red
+{
+    height: auto;
+    width: auto;
+    margin-top: 23px;
+}
+
+#api-h3
+{
+    margin-top: -12px;
+    color: #fff;
+}
+
+.localizacao
+{
+    width: 50%;
+    
+}
+
+.localizacao h1
+{
+    text-align: center;
+
+}
+
+.localizacao p 
+{
+    margin-left: 8%;
+}
+
+.localizacao p span
+{
+    font-weight: bold;
+}
+/* Fim da estilização dos cards da api*/
+
+.formas-pagamento
+{
+    margin-top: 4em;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.segundo
+{
+    display: flex;
+}
+
+
+.imagens-pagamento, .imagens-pagamento2, .imagens-pagamento3, .imagens-pagamento4
+{
+    background-image: url(../Imagens/pix.png);
+    width: 49%;
+    height: 7vw;
+    background-size: cover;
+    background-position: center; 
+    object-fit: contain;
+}
+
+.largura-geral h1
+{
+    text-align: center;
+    font-weight: bold;
+    font-size: 2vw;
+}
+
+.largura-geral
+{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.container-pag
+{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.imagens-pagamento2
+{
+    background-image: url(../Imagens/boleto.png);
+    
+    text-align: center;
+}
+
+.imagens-pagamento3
+{
+    background-image: url(../Imagens/paypal.png);
+}
+.imagens-pagamento4
+{
+    background-image: url(../Imagens/cartão.png);
+}
+
+
+/* Início da estilização da seção dúvidas */
+.duvidas-cliente
+{
+    margin-top: 30px;
+    width: 50%;
+    margin-left: 25%;
+    
+}
+.pergunta
+{
+    background-color: #4A6EEF;
+    color: #fff;
+    border-radius: 15px;
+}
+
+.resposta
+{
+    display: none;
+    background-color: #02004D;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: auto;
+    color: #fff;
+}
+.resposta p
+{
+    margin-left: 1%;
+}
+#pergunta2, #pergunta3, #pergunta4
+{
+    margin-top: 20px;
+}
+
+/* Fim da estilização da seção dúvidas */
+
+
+/* Início da estilização da seção opiniões dos clientes */
+
+#opiniao-cli, #duvidas_cliente
+{
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    align-items: center;
+    margin-top: 30px;
+    background-color: #4A6EEF;
+    color: #fff;
+    font-weight: bold;
+}
+.section-opiniao
+{
+    margin-left: 16%;
+}
+.div-estrela
+{
+    display:flex;
+    margin-left: 20%;
+    width: 20%;
+}
+.div-estrela img
+{
+    margin-left: 1%;
+    width: 60%;
+    height: 28px;
+}
+.section-opiniao .card
+{
+    margin-top: 0;
+}
+.master .card 
+{
+    width: 74%;    
+    transform: none;
+    text-align: left;
+    height: auto;
+}
+.master .card:hover
+{
+    
+    box-shadow: 0 0 14px #b700ffc2
+}
+.master
+{
+    display: inline-table;
+    margin-top: 25px;
+    width: 20%;
+
+
+}
+.master .card h4
+{
+    text-align: center;
+    margin-top: 7%;
+}
+
+.master:hover .card h4
+{
+    display: block;
+}
+
+#quarto-card-p
+{
+    font-size: 1.4vw;
+}
+
+.card p
+{
+    font-size: 1.4vw;
+}
+
+/* Fim da estilização da seção opiniões dos clientes */
+
+/* Ínicio da estilização do rodapé */
+
+.rodape
+{
+    width: 100%;
+    height: auto;  
+    border-top: 1px solid;
+    border-top: 1px solid;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: bold;
+    background-color: #fff;
+    
+}
+
+.container-omega
+{
+    width: 13%;
+    height: 100%;
+    margin-left: 6%;
+}
+
+.navegaveis
+{
+    margin-left: 5%;
+}
+
+#form-lbl
+{
+    font-size: 0.8rem;
+}
+
+
+.navegaveis ul, li a
+{
+    text-decoration: none;
+}
+
+.navegaveis ul 
+{
+    margin-top: 10px;
+}
+
+.container_inputs
+{
+    margin-left: 8%;
+}
+
+.rodape p
+{
+    margin-top: 7%;
+    font-size: 0.7vw;
+
+}
+
+.footer-logo
+{
+    margin-left: 6%;
+}
+
+.footer-logo img
+{
+    width: 16vw;
+    object-fit: contain;
+}
+
+
+.inputs
+{
+    display: flex;
+    border: 1px solid #000;
+    
+}
+
+.inputs input
+{
+    height: 25px;
+    width: 155px;
+    border: none;
+}
+
+
+#email
+{
+    width: 60%;
+}
+
+#input_botao
+{
+    width: 153px;
+    background-color: #8326EF;
+    color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.social
+{
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+}
+
+
+.social a img
+{
+    
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin: 0 5px;
+    color: #fff;
+    
+}
+
+#seta
+{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    
+}
+
+
+/* Fim da estilização do rodapé */
+
+
+@media only screen and (max-width: 650px) {
+
+    .hPerg {
+        font-size: 1.5rem !important;
+        font-weight: 501 !important;
+        margin-left: 1% !important;
+    }
+
+    #opiniao-cli, #duvidas_cliente
+    {
+        font-size: 2rem !important;
+    }
+
+
+    #IconeDiv, #IconeCarrinhoo
+    {
+        display: none !important;
+    }
+    .navbar-search 
+    {
+        margin-left: 10px !important;
+    }
+    #icone_lupa 
+    {
+        margin-top: -2px !important;
+        vertical-align: unset !important;
+    }
+    #btnImg 
+    {
+        height: 25px !important;
+        padding: .2rem 0.3rem !important;
+    }
+    #inpPesq
+    {
+        height: 25px !important;
+    }
+    #iconeCar
+    {
+        margin-left: 55px;
+    }
+
+    
+    .menu-hamburguer {
+        display: flex;
+    }
+
+    .nav-link.services
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo-site {
+        margin-left: 0px;
+        width: 38%;
+        margin-left: 2%;
+    }
+
+    .logo-site img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    
+    .slide-box img 
+    {
+        height: 69% !important;
+    }
+
+    section.slider
+    {
+        height: 310px !important;
+    }
+
+    .nav-manual, .nav-auto
+    {
+        margin-top: 18.4em !important;
+    }
+
+    .nav-manual .manual-btn, .nav-auto div
+    {
+        padding: 7px !important;
+    }
+
+   
+
+    .pjunto {
+        display: none;
+    }
+
+    .navbar {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgb(221,221,221);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 1000;
+        margin-left: 0px;
+    }
+
+    .navbar.show {
+        display: flex;
+        margin-top: 40px;
+        border-bottom-left-radius: 28px;
+        border-top-left-radius: 28px;
+    }
+
+    .input-pesquisar {
+        width: 25%;
+        margin-left: 3%;
+    }
+
+    #inp_pesquisar {
+        width: 100%;
+    }
+
+    .nav-link:hover 
+    {
+        color: #000000;
+        background-color: transparent;
+    }
+
+    #options-box-mobile a
+    {
+        text-align: center;
+        display: block;
+        color: #007BFF;
+        text-decoration: none;
+        margin: 10px 0;
+        border: 1px solid #0000ff;
+        border-radius: 5px;
+        margin-top: 2px;
+    }
+
+    
+
+    .drop-down-container {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .container-menu
+    {
+        width: 26%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        width: 100%;
+        background-color: transparent;
+    }
+
+    .nav-links {
+        flex-direction: column;
+
+        gap: 0;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: center;
+        font-size: 6vw;
+        
+    }
+
+    .drop-down-container {
+        display: none;
+    }
+
+    .drop-down-container {
+        text-decoration: none !important;
+        position: static;
+        flex-direction: column;
+    }
+
+    .drop-down {
+        flex-direction: column;
+        
+    }
+
+    .services .dropdown-icon {
+        font-size: 18px;
+        position: relative;
+        right: -5px;
+        transform: rotate(0deg);
+        transition: 0.3s ease-in-out all;
+    }
+    
+    .services.rotated .dropdown-icon {
+        transform: rotate(180deg);
+    }
+    
+    .drop-down-container .drop-down 
+    {
+        font-size: 5vw;
+    }
+
+    .drop-down li a 
+    {
+        color: midnightblue;
+    }
+
+    .drop-down-container ul
+    {
+        padding: 0;
+    }
+    
+
+    .nav-link.services
+    {
+        flex-direction: column;
+    }
+
+    .nav-link.services a
+    {
+        color: #000;
+    }
+
+    .largura-geral h1
+    {
+        font-size: 3px;
+    }
+
+
+
+    #cadA, #logB
+    {
+    display: block;
+    font-size: 5vw;
+    font-weight: bold;
+    color: #fff;
+    }
+
+    .hambs-global
+    {
+        width: 100%;
+        height: 40px;      
+        display: flex;
+        justify-content: inherit;
+        align-items: center;
+    }
+
+    .hambs-interno
+    {       
+        text-align: center;        
+    }
+
+    .section-card
+    {
+        display: grid;
+        margin-right: 8%;
+    }
+
+
+    .card
+    {
+        margin-left: 0px !important;
+        width: 100% !important;
+    }
+
+    .card-ul li 
+    {
+        font-size: 4.5vw !important;
+    }    
+
+    .card h4, h3
+    {
+        font-size: 5vw;
+    }
+
+    .card img
+    {
+        height: auto !important;
+    }
+
+    .icones_card
+    {
+        display: none !important;
+    }
+
+    .fundo p
+    {
+        font-size: 5vw !important;
+    }
+
+    .card .fundo h5
+    {
+        font-size: 3.3vw !important;
+    }
+
+    .card button 
+    {
+        font-size: 5vw !important;
+    }
+
+    .container-pag
+    {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: space-evenly !important;
+        height: 50% !important;
+        
+    }
+
+    .formas-pagamento
+    {
+        display: block !important;
+        height: 45vw !important;
+    }
+
+    .segundo
+    {
+        flex-flow: row-reverse !important;
+    }
+
+
+    .imagens-pagamento2
+    {
+        margin-top: 0px !important;
+    }
+
+    .largura-geral
+    {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-direction: column !important;
+    }
+
+
+
+    .imagens-pagamento, .imagens-pagamento4, .imagens-pagamento3, .imagens-pagamento2
+    {
+        width: 50% !important;
+        height: 61% !important;
+        margin-left: 0px !important;
+        object-fit: contain !important;
+    }
+
+    .largura-geral h1
+    {
+        font-size: 5vw !important;
+    }
+
+    .dentro
+    {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .imagens-site
+    {
+        margin-top: 70px !important;
+        flex-direction: column !important;
+        height: 1125px !important;  
+        width: 100% !important;
+        display: flex !important;
+    }
+
+    .imagens01
+    {
+        width: 100% !important;
+        height: 33.4% !important;
+    }
+    
+    .imagens02, .imagens03
+    {
+        width: 100% !important;
+        height: 33.3% !important;
+    }
+
+    .conjunto
+    {
+        top: 0px !important;
+        position: relative !important;
+    }
+
+
+    
+
+    .container-api
+    {
+        display: flex;
+        flex-wrap: wrap !important;
+    }
+
+    .api-cards
+    {
+        flex: 1 1 25% !important;
+    }
+
+    .localizacao
+    {
+        flex: 1 1 100% !important;
+    }
+
+    #api-card-um
+    {
+        margin-left: 0px !important;
+    }
+
+    .container-api
+    {
+        margin-left: 5% !important;
+        margin-right: 5% !important;
+    }
+
+    .localizacao h1
+    {
+        margin-top: 15px !important;
+    }
+
+    .localizacao p
+    {
+        margin-left: 0px !important;
+        margin-top: 10px !important;
+    }
+
+    .localizacao p br
+    {
+        display: none !important;
+    }
+
+    .container_modal
+    {
+        width: 96% !important;
+        margin-left: 2% !important;
+        margin-right: 2% !important;
+        height: 70% !important;
+    }
+
+    .container_modal h1
+    {
+        font-size: 2em;
+    }
+
+    .container_modal h2
+    {
+       margin-top: 5px !important; 
+       font-size: 1.1em !important;
+       margin-left: 2% !important;
+       
+    }
+
+    #txtHora
+    {
+        margin-left: 40% !important;
+        height: 20px;
+    }
+
+    #atendente
+    {
+        margin-top: 25px !important;
+
+    }
+
+    #botao_enviar
+    {
+        font-size: 6vw !important;
+        width: 29% !important;
+    }
+
+    .container_modal2
+    {
+        width: 96% !important;
+        margin-left: 2% !important;
+        margin-right: 2% !important;
+        height: 70% !important;
+    }
+
+    #txtArea
+    {
+        height: 20% !important;
+    }
+
+
+    .fechar_modal {
+        position: relative !important;
+        float: right;
+    }
+
+    #botao_enviar2
+    {
+        width: 29% !important;
+        font-size: 5vw !important;
+    }
+
+    .duvidas-cliente
+    {
+        margin-left: 2% !important;
+        width: 96% !important;
+    }
+
+    .resposta
+    {
+        height: auto !important;
+    }
+
+    .master
+    {
+        width: 67% !important;
+    }
+
+    .section-opiniao
+    {
+        margin-left: 24% !important;
+    }
+
+    .rodape
+    {
+        flex-direction: column-reverse;
+        height: auto !important;
+        align-items: normal !important;
+        
+    }
+
+    .container_inputs
+    {
+        order: 3 !important;
+        align-items: center;
+        display: flex;
+        flex-direction: column-reverse;
+        position: static;
+        left: 0 !important;
+        margin-left: 0px;
+
+    }
+
+    .navegaveis
+    {
+        order: 2 !important;
+        margin-left: 0px !important;
+        width: 96% !important;
+       
+    }
+
+    .navegaveis ul 
+    {
+        list-style: none;
+    }
+
+    #logo_rodape
+    {
+        order: 1 !important;
+        width: 50% !important;
+        object-fit: contain !important;
+        margin-top: 13px !important;
+        right: 19% !important;
+        position: absolute !important;
+    }
+
+    .navegaveis p br 
+    {
+        display: none;
+    }
+
+    #seta
+    {
+        order: 4 !important;
+        position: relative !important;
+        float: right !important;
+        right: 17px !important;
+        top: 56px !important;
+        left: -4% !important;
+    }
+
+    .rodape p
+    {
+        order: 5 !important;
+        font-size: 3vw !important;
+    }
+
+    .container-omega
+    {
+        display: flex !important;
+        flex-direction: row-reverse !important;
+        width: 100% !important;
+        margin-left: 0px;
+    }
+
+    .card p
+    {
+        font-size: 4.7vw !important;
+    }
+
+
+
+} 
+
+
+
+@media only screen and (min-width: 651px) and (max-width: 833px)
+{
+    .master .card
+    {
+        width: 79%;
+    }
+
+    .div-estrela 
+    {
+        margin-left: 28%;
+    }
+
+
+
+}
+
+@media only screen and (min-width: 651px) and (max-width: 990px)
+{
+    .nav-link
+    {
+        padding: 10px 10px;
+    }
+    .navbar
+    {
+        padding: 10px;
+        margin-left: 1vw !important;
+    }
+    
+    .navbar ul
+    {
+        font-size: 1.9vw;
+    }
+    .pjunto img 
+    {
+        width: 26px;
+        height: 26px;
+        
+    }
+    .input-pesquisar
+    {
+        width: 8%;
+    }
+
+    #inp_pesquisar
+    {
+
+        height: 21px;
+        border-radius: 7px;
+    }
+
+    .logo-site
+    {
+        margin-left: 2%;
+    }
+
+}
+
+@media only screen and (min-width: 651px) and (max-width: 774px)
+{
+    .navbar ul 
+    {
+        font-size: 2.1vw;
+    }
+}
+
+@media only screen and (min-width: 651px) and (max-width: 1115px)
+{
+    .card-ul li 
+    {
+        font-size: 1.9vw;
+    }
+
+    .card h3
+    {
+        font-size: 1.9vw;
+    }
+
+    .card 
+    {
+        width: 28%;
+    }
+
+    .container-omega
+    {
+        width: 16%;
+        height: 100%;
+        margin-left: 6%;
+    }
+
+    .navegaveis 
+    {
+        margin-left: 9%;
+    }
+
+    .footer-logo
+    {
+        margin-left: 5%;
+        width: 17%;
+    }
+
+    .footer-logo img 
+    {
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .container_inputs
+    {
+        margin-left: 5%;
+        width: 25%;
+    }
+
+    #form-lbl 
+    {
+        font-size: 0.6rem;
+    }
+
+    .inputs 
+    {
+        display: flex;
+        border: 1px solid #000;
+        height: 21px;
+    }
+    
+    .inputs input 
+    {
+        height: auto;
+    }
+
+    #email
+    {
+        width: 60%;
+    }
+
+    #input_botao 
+    {
+        width: 40%;
+        background-color: #8326EF;
+        color: #FFF;
+        font-weight: 540;
+        cursor: pointer;
+        height: 100%;
+        text-align: center;
+    }
+
+    .social 
+    {
+        display: flex;
+        margin-top: 12px;
+        width: 100%;
+        justify-content: space-around;
+     
+    }
+
+    .social a img 
+    {
+        width: 27px;
+        object-fit: contain;
+        margin: 2px;
+        height: unset;
+    }
+
+    .social h4
+    {
+        font-size: 1.4vw;
+        
+    }
+
+
+
+
+}
+
+/* Início da responsividade para computadores com grande monitor */
+
+@media only screen and (min-width: 1370px) and (max-width: 1600px)
+{
+    .slide-box
+    {
+        height: 39.1em;
+    }
+    .nav-manual, .nav-auto
+    {
+        margin-top: 37rem;
+    }
+
+    .navbar
+    {
+        margin-top: 1%;
+    }
+
+    .card .icones_card
+    {
+        margin-top: 1vw;
+    }
+
+    .card .icones_card img
+    {
+        margin-top: 53%;
+    }
+
+
+}
+
+/* Fim da responsividade para computadores com grande monitor */
+
+/* Início da responsividade para computadores com monitor enorme */
+@media only screen and (min-width: 1601px) 
+
+{
+  
+
+    .navbar ul
+    {
+        font-size: 26px;
+    }
+
+    #inp_pesquisar
+    {
+        margin-left: 5%;
+    }
+
+    .navbar
+    {
+        padding: 0;
+      
+    }
+
+    .nav-links
+    {
+        gap: 3rem;
+    }
+
+    .nav-manual, .nav-auto
+    {
+        margin-top: 45rem;
+    }
+
+    .aux
+    {
+        font-size: 1.25vw !important;
+    }
+
+    #aux1
+    {
+        font-size: 1.2vw !important;
+    }
+
+
+   
+    .slide-box
+    {
+        height: 47em;
+    }
+
+    .section-card
+    {
+        margin-top: 2.6em;
+    }
+    .container_modal
+    {
+        margin-top: 13em;
+    }
+
+    .container_modal2
+    {
+        margin-top: 7.5em;
+    }
+
+    .container-omega 
+    {
+        width: 15%;
+    
+    }
+
+    .navegaveis
+    {
+        margin-left: 17%;
+    }
+
+    .navegaveis ul 
+    {
+        margin-top: 43px;
+    }
+
+    
+}
+
+/* Fim da responsividade para computadores com monitor enorme */

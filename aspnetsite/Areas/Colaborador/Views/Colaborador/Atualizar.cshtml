@@ -1,0 +1,47 @@
+﻿@model aspnetsite.Models.Colaborador
+
+@{
+    ViewData["Title"] = "Atualizar";
+}
+
+<div class="card shadow" style="margin-top: 20px;">
+    <div class="card-header bg-primary text-white text-center">
+        <h4>Painel do Gerente</h4>
+    </div>
+    <div class="card-body">
+        <!-- Tabela de Notebooks -->
+        <div class="table-responsive">
+            <h5>Altere os dados do colaborador</h5>
+            <table class="table table-bordered">
+                <tbody id="edit-section">
+                    <form asp-action="Atualizar" asp-controller="Colaborador" asp-area="Colaborador" method="post">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="form-group" style="margin-top: 30px;">
+                            <label asp-for="Nome"></label>
+                            <input asp-for="Nome" class="form-control" placeholder="Digite o nome do colaborador" />
+                            <span asp-validation-for="Nome" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control" placeholder="Digite o e-mail do colaborador" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Senha"></label>
+                            <input asp-for="Senha" class="form-control" placeholder="Digite a senha do colaborador" />
+                            <span asp-validation-for="Senha" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group" style="display: flex; width:100%; justify-content:space-around; margin-top:25px;">
+                            <button type="submit" class="btn btn-primary" style="width: 30%;">Salvar</button>
+                            <a asp-controller="Colaborador" asp-action="Index" style="width:30%; background: #007bff; color: #fff; justify-content: center; display: flex; align-items: center; font-weight: 400;">Cancelar</a>
+                        </div>
+                    </form>
+
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

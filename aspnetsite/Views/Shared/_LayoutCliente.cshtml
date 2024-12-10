@@ -1,0 +1,123 @@
+﻿@inject aspnetsite.Libraries.Login.LoginCliente _LoginCliente
+@using aspnetsite.Models.Constant
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>@ViewBag.Title</title>
+
+    <link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="~/resources/lib/bootstrap-4.2.1-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/resources/lib/pagedlist/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+    <link href="~/resources/lib/pagedlist/PagedList.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @@media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+   
+    <link href="~/resources/lib/dashboard/dashboard.css" rel="stylesheet">
+</head>
+<body style="background-color: rgb(221,221,221);">
+    <header class="border-bottom py-2 w-100" style="position: fixed; top: 0; left: 0; z-index: 1000; background: #fff;">
+        <div class="d-flex justify-content-between align-items-center px-3">
+            <!-- Espaço vazio para equilibrar o layout -->
+            <div style="width: 100px;"></div>
+
+            <!-- Logo e link para a página inicial (centralizados) -->
+            <div class="d-flex flex-column align-items-center">
+                <img src="~/Imagens/com-fundo.jpeg" alt="logo" class="img-fluid mb-2" style="height: 50px;">
+                <a asp-controller="Home" asp-action="Index" class="text-dark text-decoration-none">
+                    <h5 class="mb-0">Voltar à página inicial</h5>
+                </a>
+            </div>
+
+            <!-- Nome do usuário e botão de logout (lado direito) -->
+            <div>
+                <a class="nav-link text-dark fw-bold" asp-action="LogoutCliente" asp-controller="Home">
+                    <span>@_LoginCliente.GetCliente().Nome</span> Sair
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- Ajuste para o conteúdo começar abaixo do header -->
+    <div style="margin-top: 80px;">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Barra lateral -->
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="margin-top: 45px;">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/Home/PainelComum">
+                                    <span data-feather="home"></span>
+                                    Painel de Controle
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Editar">
+                                    <span data-feather="users"></span>
+                                    Perfil
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="PainelCliente">
+                                    <span data-feather="file"></span>
+                                    Pedidos
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Relatorio">
+                                    <span data-feather="bar-chart-2"></span>
+                                    Relatórios
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <!-- Conteúdo principal -->
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/resources/lib/jquery3.3.1/jquery-3.3.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/resources/lib/jquery3.3.1/jquery-3.3.1.min.js"><\/script>')</script>
+    <script src="~/resources/lib/mask/jquery.mask.min.js"></script>
+    <script src="~/resources/lib/bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/resources/lib/feather/feather.js"></script>
+    <script src="~/resources/lib/charts/charts.js"></script>
+    <script src="~/resources/lib/dashboard/dashboard.js"></script>
+    <script src="~/resources/js/Actions.js"></script>
+    <script src="~/js/Checkoutt6.js"></script>
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html> 

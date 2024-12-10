@@ -1,0 +1,772 @@
+@model IEnumerable<aspnetsite.Models.Notebook>
+@inject aspnetsite.Models.Notebook _notebook
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/stylepB3.css">
+    <script src="./js/index1op2.js" defer></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+
+    <title>TechFlex Notebook</title>
+</head>
+<body>
+    <!-- Início do header (menu) -->
+    <div class="containerNave">
+        <div class="logo-site">
+            <img src="./Imagens/com-fundo.jpeg" alt="logo" id="logo">
+        </div>
+        <div class="navbar-search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Pesquisar...">
+                <button class="btn btn-outline-secondary" type="button">
+                    <img src="./Imagens/pesquisar.png" alt="lupa" id="icone_lupa">
+                </button>
+            </div>
+        </div>
+        
+        @*Menu hamburguer*@
+        <div class="container-menu">
+            <div class="menu-hamburguer" onclick="toggleMenu()">
+                <div class="linha"></div>
+                <div class="linha"></div>
+                <div class="linha"></div>
+            </div>
+        </div>
+        
+        <div class="pjunto">
+            <a class="text-decoration-none ms-3"><i class="fas fa-user fa-lg"></i></a>
+            <p>Login</p>
+            <div id="options-box" class="hidden">
+                <p>Faça o login abaixo</p>
+                <a asp-controller="Login" asp-action="Index" class="grad-link">Login</a>
+                <p>Faça o seu cadastro abaixo</p>
+                <a asp-controller="Cadastro" asp-action="Index" class="grad-link">Cadastro</a>
+            </div>
+        </div>        
+        <a href="/Carrinho/Carrinho" class="text-decoration-none ms-3"><i class="fas fa-shopping-cart fa-lg"></i></a>
+
+
+    </div>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li class="nav-link services" onmouseover="showDropdown()" onmouseout="hideDropdown()">
+                <a href="#">Categorias<span class="material-icons dropdown-icon">arrow_drop_down</span></a>
+                <div class="drop-down-container">
+                    <ul class="drop-down">
+                        <li><a href="/Pesquisa/Pesquisa?category=estudante">Estudante</a></li>
+                        <li><a href="/Pesquisa/Pesquisa?category=gamer">Gamer</a></li>
+                        <li><a href="/Pesquisa/Pesquisa?category=trabalho">Trabalho</a></li>
+                    </ul>
+                    <ul class="drop-down">
+                        <li><a href="#api-card-um">Atendimento</a></li>
+                        <li><a href="#opiniao-cli">Opinião dos clientes</a></li>
+                        <li><a href="#duvidas_cliente">Dúvidas frequentes</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-link"><a asp-controller="Sobre" asp-action="Index">Sobre</a></li>
+            <li class="nav-link"><a href="#rodap">Redes sociais</a></li>
+            <li class="nav-link"><a href="#card2">Suporte</a></li>
+        </ul>
+        <div class="hambs-global">
+            <div class="hambs-interno">
+                <a href="cadastro.html" id="cadA">Cadastro</a>
+            </div>
+        </div>
+        <div class="hambs-global">
+            <div class="hambs-interno">
+                <a href="login.html" id="logB">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Início do carrossel -->
+
+    <section class="slider">
+        <div class="slider-content">
+            <input type="radio" name="btn-radio" id="radio1">
+            <input type="radio" name="btn-radio" id="radio2">
+            <input type="radio" name="btn-radio" id="radio3">
+            <div class="slide-box primeiro">
+                <img class="img-desktop" src="./Imagens/1sliide-carrossel.png" alt="slide 1">
+            </div>          
+            <div class="slide-box">
+                <img class="img-desktop" src="./Imagens/2sliiide-carrossel.png" alt="slide 2">
+            </div>   
+            <div class="slide-box">
+                <img class="img-desktop" src="./Imagens/slide3.png" alt="slide 3">
+            </div>    
+            <div class="nav-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+            </div>
+            <div class="nav-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fim do carrossel -->
+
+    <!-- Início do cadastro -->
+    <button id="showFormButton" class="btn btn-primary botaoCadastrar">Cadastrar Produto</button>
+    <div id="productForm" style="display: none;">
+        <form asp-controller="Notebooks" asp-action="CadNotebook" method="post" enctype="multipart/form-data">
+            <div class="globald">
+                <div class="container">
+                    <div class="primColuna">
+                        <div class="mb-3">
+                            <label for="nomeNotebook" id="nomeLabel" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nomeNotebook" placeholder="Digite o nome">
+                        </div>
+
+                        <div class="mb-3 imagemLabelimg">
+                            <label for="imagemNotebook1" class="form-label">Imagem Principal (Card)</label>
+                            <input type="file" id="ImagemPrincipal" name="imagemNotebook1" accept="image/*">
+                        </div>
+
+                        <div class="mb-3 imagemLabelimg">
+                            <label for="imagemNotebook2" class="form-label">Imagem Adicional 1</label>
+                            <input type="file" name="imagemNotebook2" accept="image/*">
+                        </div>
+
+                        <div class="mb-3 imagemLabelimg">
+                            <label for="imagemNotebook3" class="form-label">Imagem Adicional 2</label>
+                            <input type="file" name="imagemNotebook3" accept="image/*">
+                        </div>
+
+                        <div class="mb-3 imagemLabelimg">
+                            <label for="imagemNotebook4" class="form-label">Imagem Adicional 3</label>
+                            <input type="file" name="imagemNotebook4" accept="image/*">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descontoNotebook" class="form-label">Desconto</label>
+                            <input type="number" name="descontoNotebook" step="0.01" class="form-control" id="desconto" placeholder="Digite o desconto">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="precoNotebook" class="form-label">Preço</label>
+                            <input type="number" name="precoNotebook" class="form-control" id="Preco" placeholder="Digite o Preco">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label>Oferecer Garantia Estendida?</label>
+                            <div>
+                                <input type="radio" id="garantiaSim" name="oferecerGarantia" value="sim" onclick="mostrarValorGarantia(true)"> Sim
+                                <input type="radio" id="garantiaNao" name="oferecerGarantia" value="nao" onclick="mostrarValorGarantia(false)"> Não
+                            </div>
+                        </div>
+
+                        <div class="mb-3" id="campoValorGarantia" style="display:none;">
+                            <label for="valorGarantiaNotebook">Valor da Garantia Estendida</label>
+                            <input type="number" name="valorGarantiaNotebook" id="valorGarantia" step="0.01" class="form-control" placeholder="Digite o valor da garantia">
+                        </div>
+
+                        <script>
+                            function mostrarValorGarantia(mostrar) {
+                                document.getElementById('campoValorGarantia').style.display = mostrar ? 'block' : 'none';
+                            }
+                        </script>
+
+
+                        <div class="mb-3">
+                            <label for="corNotebook" id="cor" class="form-label">Cor</label>
+                            <input type="text" class="form-control" id="cor" name="corNotebook" placeholder="Digite a cor">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="sistemaOperacionalNotebook" id="sistemaOp" class="form-label">Sistema Operacional</label>
+                            <input type="text" name="sistemaOperacionalNotebook" class="form-control" id="sistemaOperacional" placeholder="Digite o sistema operacional">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="processadorNotebook" class="form-label">Processador</label>
+                            <input type="text" name="processadorNotebook" class="form-control" id="processador" placeholder="Digite o processador">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="placaVideoNotebook" class="form-label">Placa de Vídeo</label>
+                            <input type="text" name="placaVideoNotebook" class="form-control" id="placaVideo" placeholder="Digite a placa de vídeo">
+                        </div>
+
+                    </div>
+
+                    <div class="segColuna">
+                        <div class="mb-3">
+                            <label for="telaNotebook" id="tela" class="form-label">Tela</label>
+                            <input type="text" name="telaNotebook" class="form-control" placeholder="Digite as especificações da tela">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="memoriaNotebook" id="memoriaRAM" class="form-label">Memória RAM</label>
+                            <input type="text" name="memoriaNotebook" class="form-control" id="memoria" placeholder="Digite a quantidade de memória RAM">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="armazenamentoNotebook" id="armazenaLabel" class="form-label">Armazenamento</label>
+                            <input type="text" name="armazenamentoNotebook" class="form-control" id="armazenamento" placeholder="Digite o tipo e capacidade de armazenamento">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="portasConexaoNotebook" class="form-label">Portas de Conexão</label>
+                            <input type="text" name="portasConexaoNotebook" class="form-control" id="portasConexao" placeholder="Digite as portas de conexão disponíveis">
+                        </div>
+                    
+                        <div class="mb-3">
+                            <label for="cameraNotebook" id="cameraLa" class="form-label">Câmera</label>
+                            <input type="text" name="cameraNotebook" class="form-control" id="camera" placeholder="Digite as especificações da câmera">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="audioNotebook" class="form-label">Áudio</label>
+                            <input type="text" name="audioNotebook" class="form-control" id="audio" placeholder="Digite as especificações de áudio">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="redeComunicacaoNotebook" id="redeComunicacao" class="form-label">Rede e Comunicação</label>
+                            <input type="text" name="redeComunicacaoNotebook" class="form-control" placeholder="Digite as informações de rede e comunicação">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bateriaNotebook" class="form-label">Bateria</label>
+                            <input type="text" name="bateriaNotebook" class="form-control" id="bateria" placeholder="Digite as especificações da bateria">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fonteAlimentacaoNotebook" class="form-label">Fonte de Alimentação</label>
+                            <input type="text" name="fonteAlimentacaoNotebook" class="form-control" id="fonteAlimentacao" placeholder="Digite as especificações da fonte de alimentação">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="pesoNotebook" class="form-label">Peso</label>
+                            <input type="text" name="pesoNotebook" class="form-control" id="peso" placeholder="Digite o peso do produto">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="incluidoNaCaixaNotebook" class="form-label">Incluído na Caixa</label>
+                            <input type="text" name="incluidoNaCaixaNotebook" class="form-control" id="incluidoNaCaixa" placeholder="Digite o que está incluído na caixa">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botões -->
+                <div class="cadbotao">
+                    <button type="submit" class="btn btn-success botaoDuplo">Salvar Produto</button>
+                    <button type="button" id="hideFormButton" class="btn btn-danger botaoDuplo">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("showFormButton").addEventListener("click", function () {
+            document.getElementById("productForm").style.display = "block";
+        });
+
+        document.getElementById("hideFormButton").addEventListener("click", function () {
+            document.getElementById("productForm").style.display = "none";
+        });
+    </script>
+    <!-- Fim do cadastro -->
+
+
+    <!-- Início dos cards -->
+    <section class="section-card" id="section-gamer">
+        @foreach (var Notebook in Model)
+        {
+            <div class="card">
+                <img src="@Notebook.imagemNotebook1" alt="notebook">
+                <h3>@Notebook.nomeNotebook</h3>
+                <ul class="card-ul">
+                    <li>@Notebook.placaVideoNotebook</li>
+                    <li>@Notebook.processadorNotebook</li>
+                    <li>Memória RAM: @Notebook.memoriaNotebook</li>
+                </ul>
+                <h4>APENAS: R$ @Notebook.precoNotebook</h4>
+                <div class="fundo">
+                    <p>À Vista: R$ @(Notebook.precoNotebook - Notebook.descontoNotebook)</p>
+                    <h5>R$ @Notebook.descontoNotebook DE DESCONTO</h5>
+                </div>
+
+                <a asp-controller="Cards" asp-action="DetalhesProduto" asp-route-id="@Notebook.codNotebook">
+                    <button id="botao-card">Mais informações</button>
+                </a>
+                
+                <!-- Botão de editar -->
+                <a asp-controller="Notebooks" asp-action="Edit" asp-route-id="@Notebook.codNotebook">
+                    <button id="botao-card">Atualizar</button>
+                </a>
+                @* <button class="edit-button"
+                        onclick="editCard(this)"
+                        data-id       = "@Notebook.codNotebook" 
+                        data-nome     = "@Notebook.nomeNotebook"
+                        data-preco    = "@Notebook.precoNotebook"
+                        data-desconto = "@Notebook.descontoNotebook"
+                        data-cor      = "@Notebook.corNotebook"
+                        data-processador        = "@Notebook.processadorNotebook"
+                        data-sistemaoperacional = "@Notebook.sistemaOperacionalNotebook"
+                        data-memoria            = "@Notebook.memoriaNotebook"
+                        data-placaVideo         = "@Notebook.placaVideoNotebook"
+                        data-armazenamento      = "@Notebook.armazenamentoNotebook"
+                        data-bateria = "@Notebook.bateriaNotebook"
+                        data-tela    = "@Notebook.telaNotebook"
+                        data-PortasConexao  = "@Notebook.portasConexaoNotebook"
+                        data-camera         = "@Notebook.cameraNotebook"
+                        data-rede           = "@Notebook.redeComunicacaoNotebook"
+                        data-fonte          = "@Notebook.fonteAlimentacaoNotebook"
+                        data-peso           = "@Notebook.pesoNotebook"
+                        data-incluido       = "@Notebook.incluidoNaCaixaNotebook"
+                        data-audio          = "@Notebook.audioNotebook"
+                        data-valor-garantia = "@Notebook.valorGarantiaNotebook?.ToString("F2")">
+                    Editar
+                </button> *@
+
+
+                <!-- Botão de exclusão -->
+                <form asp-action="Delete" asp-controller="Notebooks" method="post">
+                    <input type="hidden" name="id" value="@Notebook.codNotebook" />
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este produto?');">Excluir</button>
+                </form>
+
+            </div>
+        }
+
+    </section>
+    <!-- Formulário de edição fora dos cards -->
+    <div id="edit-section" style="display:none;">
+        <button class="btn btn-primary botaoCadastrar">Edição de Produto</button>
+        <form asp-action="Edit" asp-controller="Notebooks" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="editProductId" name="codNotebook" />
+            <div class="globald">
+                <div class="container">
+                    <div class="primColuna">
+
+                        <div class="mb-3">
+                            <label for="edit_nome" id="edit_nomeLabel" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="edit_nome" name="nomeNotebook">
+                        </div>
+
+                        <div class="mb-3 imagemLabelimg">
+                            <label for="edit_Imagem" class="form-label">Imagem Principal (Card)</label>
+                            <input type="file" name="ImagemNotebook1" accept="image/*">
+                        </div>
+
+                        <div class="mb-3 imagemLabelimg">
+                            <label for="edit_ImagemAdicional1" class="form-label">Imagem Adicional 1</label>
+                            <input type="file" name="ImagemNotebook2" accept="image/*">
+                        </div>
+
+                        <div class="mb-3 imagemLabelimg">
+                            <label for="edit_ImagemAdicional2" class="form-label">Imagem Adicional 2</label>
+                            <input type="file" name="ImagemNotebook3" accept="image/*">
+                        </div>
+
+                        <div class="mb-3 imagemLabelimg">
+                            <label for="edit_ImagemAdicional3" class="form-label">Imagem Adicional 3</label>
+                            <input type="file" name="ImagemNotebook4" accept="image/*">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_desconto" class="form-label">Desconto</label>
+                            <input type="number" name="descontoNotebook" step="0.01" class="form-control" id="edit_desconto" placeholder="Digite o desconto">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_Preco" class="form-label">Preço</label>
+                            <input type="number" name="precoNotebook" class="form-control" id="edit_Preco" placeholder="Digite o Preco">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Oferecer Garantia Estendida?</label>
+                            <div>
+                                <input type="radio" id="edit_garantiaSim" name="oferecerGarantia" value="sim" onclick="mostrarCampoValorGarantia(true)"> Sim
+                                <input type="radio" id="edit_garantiaNao" name="oferecerGarantia" value="nao" onclick="mostrarCampoValorGarantia(false)"> Não
+                            </div>
+                        </div>
+
+                        <div class="mb-3" id="edit_campoValorGarantia" style="display:none;">
+                            <label for="edit_valorGarantia">Valor da Garantia Estendida</label>
+                            <input type="number" name="valorGarantiaNotebook" id="edit_valorGarantia" step="0.01" class="form-control" placeholder="Digite o valor da garantia">
+                        </div>
+
+                        <script>
+                            function mostrarCampoValorGarantia(mostrar) {
+                                document.getElementById('edit_campoValorGarantia').style.display = mostrar ? 'block' : 'none';
+                            }
+                        </script>
+
+                        <div class="mb-3">
+                            <label for="edit_cor" class="form-label">Cor</label>
+                            <input type="text" class="form-control" id="edit_cor" name="corNotebook" placeholder="Digite a cor">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_sistemaoperacional" class="form-label">Sistema Operacional</label>
+                            <input type="text" name="sistemaOperacionalNotebook" class="form-control" id="edit_sistemaoperacional">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_processador" class="form-label">Processador</label>
+                            <input type="text" name="processadorNotebook" class="form-control" id="edit_processador" placeholder="Digite o processador">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_placaVideo" class="form-label">Placa de Vídeo</label>
+                            <input type="text" name="placaVideoNotebook" class="form-control" id="edit_placaVideo" placeholder="Digite a placa de vídeo">
+                        </div>
+                    </div>
+                    <div class="segColuna">
+                        <div class="mb-3">
+                            <label for="edit_tela" id="tela_label" class="form-label">Tela</label>
+                            <input type="text" name="telaNotebook" class="form-control" id="edit_tela_unique" placeholder="Digite as especificações da tela">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_memoria" class="form-label">Memória RAM</label>
+                            <input type="text" name="memoriaNotebook" class="form-control" id="edit_memoria" placeholder="Digite a quantidade de memória RAM">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_armazenamento" class="form-label">Armazenamento</label>
+                            <input type="text" name="armazenamentoNotebook" class="form-control" id="edit_armazenamento" placeholder="Digite o tipo e capacidade de armazenamento">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_portas_unique_Conexao" class="form-label">Portas de Conexão</label>
+                            <input type="text" name="portasConexaoNotebook" class="form-control" id="edit_portas_unique_Conexao" placeholder="Digite as portas de conexão disponíveis">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_camera" id="camera_label" class="form-label">Câmera</label>
+                            <input type="text" name="cameraNotebook" class="form-control" id="edit_camera" placeholder="Digite as especificações da câmera">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_audio" class="form-label">Áudio</label>
+                            <input type="text" name="audioNotebook" class="form-control" id="edit_audio" placeholder="Digite as especificações de áudio">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_rede_Comunicacao" id="redeec" class="form-label">Rede e Comunicação</label>
+                            <input type="text" name="redeComunicacaoNotebook" class="form-control" id="edit_rede_Comunicacao" placeholder="Digite as informações de rede e comunicação">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_bateria" class="form-label">Bateria</label>
+                            <input type="text" name="bateriaNotebook" class="form-control" id="edit_bateria_unique" placeholder="Digite as especificações da bateria">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_fonteAlimentacao" class="form-label">Fonte de Alimentação</label>
+                            <input type="text" name="fonteAlimentacaoNotebook" class="form-control" id="edit_fonteAlimentacao" placeholder="Digite as especificações da fonte de alimentação">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_peso" class="form-label">Peso</label>
+                            <input type="text" name="pesoNotebook" class="form-control" id="edit_peso" placeholder="Digite o peso do produto">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_incluidoNaCaixa" class="form-label">Incluído na Caixa</label>
+                            <input type="text" name="incluidoNaCaixaNotebook" class="form-control" id="edit_incluidoNaCaixa" placeholder="Digite o que está incluído na caixa">
+                        </div>
+                    </div>
+                </div>
+                <!-- Botões -->
+                <div class="cadbotao">
+                    <button type="submit" class="btn btn-success botaoDuplo">Salvar</button>
+                    <button type="button" id="hideFormButton" onclick="cancelEdit()" class="btn btn-danger botaoDuplo">Cancelar</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    
+
+
+    <!-- Fim dos cards -->
+
+
+    <!-- Fim dos cards -->
+
+    <!-- Início da seção de pagamento -->
+
+    <section class="formas-pagamento">
+        <div class="container-pag">
+            <div class="largura-geral">
+                <div class="imagens-pagamento">   
+                </div>
+                <h1>PIX</h1>
+            </div>
+            <div class="largura-geral">
+                <div class="imagens-pagamento2">
+                </div>
+                <h1>Boleto</h1>
+            </div>
+        </div>
+        <div class="container-pag segundo">
+            <div class="largura-geral">
+                <div class="imagens-pagamento3">
+                </div>
+                <h1>PayPal</h1>
+            </div>
+            <div class="largura-geral">
+                <div class="imagens-pagamento4">
+                </div>
+                <h1>Débito/Crédito</h1>
+            </div>
+        </div>
+    </section>
+    <!-- Fim da seção de pagamento -->
+
+    <!-- Início da seção das imagens -->
+    <section class="imagens-site">
+        <div class="imagens01">
+            <div class="dentro">
+                <div class="conjunto">
+                    <h1>Vá a qualquer lugar</h1>
+                    <h3>Bateria que nunca te abandona</h3>
+                </div>
+            </div>
+        </div>
+        <div class="imagens02">
+            <div class="dentro">
+                <div class="conjunto">
+                    <h1>Gráficos no máximo </h1>
+                    <h3>Aproveite todo desempenho</h3>
+                </div>
+            </div>
+        </div>
+        <div class="imagens03">
+            <div class="dentro">
+                <div class="conjunto">
+                    <h1>Para todas situações</h1>
+                    <h3>Ideal para o trabalho</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fim da seção das imagens -->
+    
+    <!--Início do modal do atendimento -->
+
+    <div id="fundo_escuro" onclick="fecharModal(event)">
+        <form action="" method="get" >
+            <div class="container_modal" onclick="impedirPropagacao(event)">
+                <button class="fechar_modal" onclick="fecharModal(event)">X</button>
+                <h1>Escolha um horário e digite o seu número</h1>
+                <hr/>
+                <h3>Digite o horário em que você tenha disponibilidade para nós realizarmos o atendimento (por ligação ou mensagem)</h3>
+                <input type="text" id="txtHora" placeholder="00:00" pattern="([01][0-9]|2[0-3]):[0-5][0-9]">
+                <label for="txtHora"></label>
+                <h2>Agora digite o seu número:</h2>
+                <img src="./Imagens/icone_atendente.png" alt="atendente" id="atendente">
+                <img src="./Imagens/icone_telefone.png" alt="telefone" id="icone_telefone">
+                <input type="tel" name="tel" id="txtTelefone" placeholder="(XX) XXXX-XXXX" autocomplete="tel" pattern="^\(\d{2}\)\d{4,5}-\d{4}$">
+                <div>
+                    <button id="botao_enviar">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--Fim do modal do atendimento -->
+
+    <!-- Início do 2º modal (suporte) -->
+
+    <div id="fundo_escuro2" onclick="fecharModal2(event)">
+        <form>
+            <div class="container_modal2" onclick="impedirPropagacao(event)">
+                <button class="fechar_modal" onclick="fecharModal2(event)">X</button>
+                <h1>Descreva o seu problema</h1> 
+                <hr/>
+                <input type="text" placeholder="Seu nome" name="modal_nome" id="modal_nome">
+                <label for="modal_nome"></label>
+                <input type="text" placeholder="Seu e-mail" name="modal_email" id="modal_email">
+                <label for="modal_email"></label>
+                <div>
+                    <input type="text" placeholder="Assunto" name="modal_assunto" id="modal_assunto">
+                    <label for="modal_assunto"></label>
+                </div>
+                <textarea name="txtArea" id="txtArea" placeholder="Mensagem"></textarea>
+                <div class="btn">
+                    <button id="botao_enviar2">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+   <!-- Fim do 2º modal (suporte) -->
+
+
+    <!-- Início dos modais em 2 cards -->
+
+    <div class="container-api">
+        <div class="api-cards" id="api-card-um" onclick="exibirModal()">
+            <img src="./Imagens/icon-telephone.png" alt="telefone" class="api-img-um">
+            <img src="./Imagens/icon_telephone_red.png" alt="telefone" class="api-img-um-red">
+            <h3>Atendimento</h3>
+        </div>
+        <div class="api-cards" id="card2" onclick="exibirModal2()">
+            <img src="./Imagens/icon-assistent.png" alt="suporte" class="api-img-um" id="api-img-assistente">
+            <img src="./Imagens/icon-atendente-red.png" alt="suporte" class="api-img-um-red" id="api-img-assistente-red">
+            <h3 id="api-h3">Suporte</h3>
+        </div>
+        <div class="localizacao" id="localiza">
+            <h1>Localização</h1>
+            <p>Estamos localizados na Rua Guaipá, 678 - Vila Leopoldina em São Paulo </br> CEP: 05089-000.</p>
+            <p><span>Estamos aberto:</span> segunda a sábado das 09:00 até as 17:00 horas.</p>
+        </div>
+    </div>
+    <!-- Fim dos modais em 2 cards -->
+    
+
+    <h1 id="duvidas_cliente">Dúvidas frequentes</h1>
+    <!-- Início da seção de dúvidas dos clientes -->
+    <section class="duvidas-cliente">
+        <div class="pergunta" id="pergunta1" onmouseover="mostrarPergunta('resposta1')" onmouseout="esconderPergunta('resposta1')" onclick="togglePergunta('resposta1')">
+            <h2>+ Posso utilizar quais formas de pagamento?</h2>
+            <div class="resposta" id="resposta1">
+                <p>Você pode utilizar cartões de crédito, débito e PayPal como formas de pagamento.</p>
+            </div>
+        </div>
+        <div class="pergunta" id="pergunta2" onmouseover="mostrarPergunta('resposta2')" onmouseout="esconderPergunta('resposta2')" onclick="togglePergunta('resposta2')">
+            <h2>+ Em quanto tempo irei receber a minha compra?</h2>
+            <div class="resposta" id="resposta2">
+                <p>Nos comprometemos em entregar no prazo máximo de 7 dias úteis.</p>
+            </div>
+        </div>
+        <div class="pergunta" id="pergunta3" onmouseover="mostrarPergunta('resposta3')" onmouseout="esconderPergunta('resposta3')" onclick="togglePergunta('resposta3')">
+            <h2>+ Haverá algum custo adicional se eu me arrepender da compra?</h2>
+            <div class="resposta" id="resposta3">
+                <p>Não haverá nenhum custo adicional, nós cobriremos qualquer despesa.</p>
+            </div>
+        </div>
+        <div class="pergunta" id="pergunta4" onmouseover="mostrarPergunta('resposta4')" onmouseout="esconderPergunta('resposta4')" onclick="togglePergunta('resposta4')">
+            <h2>+ Tenho quanto tempo de garantia?</h2>
+            <div class="resposta" id="resposta4">
+                <p>Todos os produtos possuem 12 meses de garantia.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Fim da seção dúvidas dos clientes -->
+
+
+    <!-- Início da seção opiniões dos clientes -->
+
+    <h1 id="opiniao-cli">Opinião dos clientes</h1>
+    <section class="section-opiniao">
+        <div class="master">
+            <div class="div-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+            </div>
+            <div class="card">
+                <p class="aux" id="aux1">O produto foi entregue bem embalado e no prazo esperado, voltarei sempre que precisar. </p>
+                <h4>Autor(a):</h4>
+                <h5>Karoline</h5>
+            </div>
+        </div>
+        <div class="master">
+            <div class="div-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+            </div>
+            <div class="card">
+                <p class="aux">Gostei muito das cores e da organização dos elementos no site, é bem agradável.</p>
+                <h4>Autor(a):</h4>
+                <h5>Natália</h5>
+            </div>
+        </div>
+        <div class="master">
+            <div class="div-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+            </div>
+            <div class="card">
+                <p class="aux">Aqui encontrei o melhor preço e economizei bastante, estou feliz e recomendo.</p>
+                <h4>Autor(a):</h4>
+                <h5>Vânia</h5>
+            </div>
+        </div>
+        <div class="master">
+            <div class="div-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+                <img src="./Imagens/icone-estrela.png" alt="icone-estrela">
+            </div>
+            <div class="card">
+                <p id="quarto-card-p" class="aux">Entrei em contato com o suporte e ainda no mesmo dia resolveram meu problema, valeu</p>
+                <h4>Autor(a):</h4>
+                <h5>Valdilene</h5>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fim da seção opiniões dos clientes -->
+
+    <!-- Início do rodapé -->
+    <footer class="rodape" id="rodap">
+        <div class="container-omega">
+            <nav class="navegaveis">
+                <ul>
+                    <li><a href="sobre.html">Sobre nós</a></li>
+                    <li><a href="#localiza">Localização</a></li>
+                    <li><a href="#card2">Suporte</a></li>
+                </ul>
+                <p>TechFlexNotebook Todos os direitos <br>reservados <span>&copy;</span></p>
+            </nav>
+        </div>
+        <div class="footer-logo">
+            <img src="./Imagens/com-fundo.jpeg" alt="logo" id="logo_rodape">
+        </div>
+        <div class="container_inputs">
+            <form asp-controller="Email" asp-action="SendEmail" method="post" >
+                <label for="email" id="form-lbl">Digite um e-mail e receba promoções!</label>
+                <div class="inputs">
+                    <input type="email" id="email" name="email" placeholder="E-mail" required autocomplete="off">
+                    <input type="submit" id="input_botao" value="Cadastrar">
+                </div>
+            </form>
+            <div class="social">
+                <h4>Siga-nos:</h4>
+                <a href="https://www.instagram.com/techflex024?igsh=MWJvNGd1Zjg2YTc1Yg=="><img src="./Imagens/instagram.png" alt="instagram"></a>
+                <a href="https://wa.me/qr/PXOS347KIXH3A1"><img src="./Imagens/whatsapp.png" alt="whatsapp"></a>
+                <a href="https://www.facebook.com/profile.php?id=61561168657526"><img src="./Imagens/facebook.png" alt="facebook"></a>
+                <a href="https://www.linkedin.com/in/tech-flex-424a96314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="./Imagens/linkedin.png" alt="linkedin"></a>
+            </div>    
+        </div>
+        <a href="#logo"><img src="./Imagens/seta-acima.png" alt="seta" id="seta"></a>
+    </footer>
+
+    <!-- Fim do rodapé -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

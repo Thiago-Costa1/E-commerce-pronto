@@ -1,0 +1,46 @@
+﻿@model aspnetsite.Models.Colaborador
+
+@{
+    ViewData["Title"] = "Cadastrar colaborador";
+}
+
+<div class="card shadow" style="margin-top: 20px;">
+    <div class="card-header bg-primary text-white text-center">
+        <h4>Painel do Gerente</h4>
+    </div>
+    <div class="card-body">
+        <!-- Tabela de Notebooks -->
+        <div class="table-responsive">
+            <h5>Insira os dados para cadastrar um colaborador</h5>
+            <table class="table table-bordered">                
+                <tbody id="edit-section">                    
+                    <form asp-action="Cadastrar">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group" style="margin-top:30px;">
+                            <label asp-for="Nome" class="control-label"></label>
+                            <input asp-for="Nome" class="form-control" required/>
+                            <span asp-validation-for="Nome" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" required />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Senha" class="control-label"></label>
+                            <input asp-for="Senha" class="form-control" required />
+                            <span asp-validation-for="Senha" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group" style="display: flex; width:100%; justify-content:space-around">
+                            <input type="submit" value="Cadastrar" class="btn btn-primary" style="width:30%;" />
+                            <a asp-controller="Colaborador" asp-action="Index" style="width:30%; background: #007bff; color: #fff; justify-content: center; display: flex; align-items: center; font-weight: 400;">Voltar</a>
+                        </div>
+                    </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>   

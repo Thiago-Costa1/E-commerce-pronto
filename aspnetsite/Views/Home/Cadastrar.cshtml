@@ -1,0 +1,106 @@
+﻿@model aspnetsite.Models.Cliente
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] Cadastro </title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/aspnetsite.styles.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/cadastroCliente5.css">
+       
+    </head>
+    <body>
+        <header class="hea">
+            <div class="container-logo">
+                <img src="~/Imagens/com-fundo.jpeg" alt="logo">
+                <a asp-controller="Home" asp-action="Index"><h4>Voltar a página inicial</h4></a>
+            </div>
+        </header>
+        <main role="main">
+            <section class="container mt-5">               
+                <article class="card-body p-4">
+                @if (TempData["MSG_S"] != null)
+                {
+                    <p class="alert alert-success">@TempData["MSG_S"]</p>
+                }
+
+                <div id="container-maximo">
+                    <h1 style="font-weight:bold;">Cadastre-se para efetuar compras</h1>
+                    <form asp-action="Cadastrar" asp-controller="Home" method="post" id="form-registro" class="cadastro">
+            
+                        <div class="container-medio espaco">
+                            <label asp-for="Nome">Nome</label>
+                            <input type="text" asp-for="Nome" id="name" placeholder="Digite seu nome" />
+                            <span asp-validation-for="Nome" class="text-danger"></span>
+                        </div>
+                                   
+                        <div class="container-medio espaco">
+                            <label asp-for="Senha">Senha</label>
+                            <input type="password" asp-for="Senha" id="senha" placeholder="Digite sua senha" />
+                            <span asp-validation-for="Senha" class="text-danger"></span>
+                        </div>
+            
+                        <div class="container-grande">
+                            <label asp-for="Email">E-mail</label>
+                            <input type="email" asp-for="Email" id="email1" placeholder="Digite seu e-mail" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="container-medio espaco">
+                            <label asp-for="Cidade">Cidade</label>
+                            <input type="text" asp-for="Cidade" placeholder="Nome da cidade" />
+                            <span asp-validation-for="Cidade" class="text-danger"></span>
+                        </div>
+                        <div class="container-medio">
+                            <label asp-for="Cep">CEP</label>
+                            <input type="text" asp-for="Cep" placeholder="00000-120" />
+                            <span asp-validation-for="Cep" class="text-danger"></span>
+                        </div>
+                        <div class="container-medio espaco">
+                            <label asp-for="Endereco">Endereço</label>
+                            <input type="text" asp-for="Endereco" placeholder="Rua/Avenida" />
+                            <span asp-validation-for="Endereco" class="text-danger"></span>
+                        </div>
+
+                        <div class="container-medio espaco">
+                            <label asp-for="Nascimento">Data de Nascimento</label>
+                            <input type="date" asp-for="Nascimento" placeholder="Data de nascimento" />
+                            <span asp-validation-for="Nascimento" class="text-danger"></span>
+                        </div>
+                        <div class="container-grande">
+                            <label>Sexo</label>
+                            <div class="d-flex">
+                                <div class="form-check me-3">
+                                    <input type="radio" asp-for="Sexo" value="M" class="form-check-input" />
+                                    <label class="form-check-label">Masculino</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" asp-for="Sexo" value="F" class="form-check-input" />
+                                    <label class="form-check-label">Feminino</label>
+                                </div>
+                            </div>
+                            <span asp-validation-for="Sexo" class="text-danger"></span>
+                        </div>
+                        <div class="container-medio espaco">
+                            <label asp-for="CPF">CPF</label>
+                            <input type="text" asp-for="CPF" placeholder="000.000.000-00" />
+                            <span asp-validation-for="CPF" class="text-danger"></span>
+                        </div>
+                        <div class="container-medio">
+                            <label asp-for="Telefone">Telefone</label>
+                            <input type="tel" asp-for="Telefone" placeholder="(00) 00000-0000" />
+                            <span asp-validation-for="Telefone" class="text-danger"></span>
+                        </div>
+                        <div class="container-grande">
+                            <input id="btn-enviar" type="submit" value="Cadastrar" />
+                        </div>
+                        <a asp-action="Login" asp-controller="Home">Já realizou o cadastro? Faça o login.</a>
+                    </form>
+                </div>
+                </article>                      
+            </section>
+        </main>
+    </body>
+</html>

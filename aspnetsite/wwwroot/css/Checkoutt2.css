@@ -1,0 +1,108 @@
+﻿header {
+    height: 103px;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.container-logo {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .container-logo img {
+        width: 84%;
+        height: 75px;
+        object-fit: contain;
+    }
+
+    .container-logo a h4 {
+        color: #000;
+    }
+
+header a {
+    text-decoration: none;
+}
+
+
+
+.order-products {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.order-summary {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.payment-info {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.payment-info h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.payment-info .form-label {
+    font-weight: bold;
+    color: #555;
+}
+
+.payment-info .btn {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+button.form-control {
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    text-align: left;
+}
+
+#dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    z-index: 1000;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-option:hover {
+    background-color: #f0f0f0;
+}
+
+#bt1 {
+    margin-top: 35px;
+}

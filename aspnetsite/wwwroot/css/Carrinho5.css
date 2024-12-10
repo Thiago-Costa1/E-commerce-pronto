@@ -1,0 +1,275 @@
+﻿body
+{
+    background-color: rgb(221, 221, 221) !important; /* Fundo escuro */
+}
+
+/* Início do header (menu) */
+header {
+    height: 103px;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+
+h6
+{
+    color: #000 !important;
+}
+.btu
+{
+    border: 1px solid #cdcdcd !important;
+}
+
+.container-logo {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .container-logo img {
+        width: 84%;
+        height: 75px;
+        object-fit: contain;
+    }
+
+    .container-logo a h4 {
+        color: #000;
+    }
+
+header a {
+    text-decoration: none;
+}
+
+/* Fim do header (menu) */
+
+
+/* Ajuste para o nome do notebook */
+.notebook-name {
+    height: 40px; 
+    line-height: 20px; 
+    overflow: hidden; /
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+    display: block;
+}
+
+/* Para responsividade */
+@media (max-width: 768px) {
+    .notebook-name {
+        font-size: 14px;
+        height: auto; /* Permite que o texto ocupe mais espaço em telas menores */
+        white-space: normal; /* Permite quebras de linha */
+    }
+}
+
+
+
+#pEnvio
+{
+    display: flex;
+    justify-content: center;
+}
+
+#qntid 
+{
+    border: 1px solid;
+    border-radius: 8px;
+}
+
+#pPreco {
+    margin-bottom: 0px !important;
+}
+
+.summary-container
+{
+    margin-bottom: 30px;
+}
+
+#CoPrec {
+    margin-left: auto;
+    text-align: center;
+
+}
+
+@media (min-width: 168px) {
+    #CoPrec {
+        flex: 0 0 auto;
+        width: 17.66666667% !important;
+    }
+
+    .btnLe {
+        margin-left: auto !important;
+        width: auto !important;
+        margin-right: auto !important;
+    }
+
+    #pItens {
+        text-align: right;
+        margin-right: 20px;
+        font-weight: bolder;
+    }
+
+
+    .cart-container {
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .summary-container {
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-img {
+        width: 80px;
+    }
+
+    .product-details {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start; /* Ajusta a distribuição */
+        flex-wrap: wrap; /* Permite que os elementos quebrem linha */
+    }
+
+    .summary-title {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .checkout-btn {
+        background-color: black;
+        color: white;
+    }
+    /* Estilo para os botões de quantidade */
+    /* Estilo para alinhar os botões e o input em uma única linha */
+    .quantity-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .quantity-btn {
+        border: none;
+        background-color: transparent;
+        font-size: 18px;
+        width: 30px;
+    }
+
+    .quantity-input {
+        width: 40px;
+        text-align: center;
+        border: none;
+        background-color: transparent;
+        margin: 0px !important;
+    }
+
+    @media (min-width: 768px) {
+        .col-md-6 {
+            flex: 0 0 auto !important;
+            width: 22% !important;
+        }
+    }
+
+
+
+    @media only screen and (max-width: 650px) {
+        .container-logo {
+            width: 67% !important;
+            height: 75px;
+            margin-top: 14px;
+            object-fit: contain !important;
+        }
+
+        .rodape {
+            flex-direction: column;
+            height: auto;
+        }
+
+        .container_inputs {
+            order: 1;
+        }
+
+        .imgg {
+            order: 2;
+            width: 84%;
+            height: 75px;
+        }
+
+        #logo_rodape {
+            margin-top: 10px;
+            height: 100%;
+        }
+
+        .container-omega {
+            order: 3;
+            width: 62%;
+        }
+
+        .rodape p {
+            font-size: 2.4vw;
+            margin-top: 10px;
+        }
+
+        .container_inputs h5 {
+            margin-top: 10px;
+        }
+
+        #container-maximo {
+            width: 85% !important;
+            padding: 12px !important;
+            margin-bottom: 0px !important;
+            margin-top: 63px !important;
+        }
+
+        body {
+            height: 724px !important;
+        }
+    }
+
+    @media only screen and (min-width: 651px) and (max-width: 905px) {
+        .rodape p {
+            font-size: 1.4vw;
+        }
+
+        .container_inputs {
+            width: 40%;
+        }
+    }
+
+
+
+
+    @media only screen and (min-width: 1601px) {
+        #container-maximo {
+            margin-top: 16vh;
+        }
+
+        .container-logo img {
+            width: 77%;
+        }
+
+        header {
+            height: 155px;
+        }
+    }
+
+    @media only screen and (min-width: 1601px) {
+        #container-maximo {
+            margin-bottom: 16.6vw;
+            margin-top: 16vh;
+        }
+
+        .container-omega {
+            margin-left: -8%;
+        }
+    }
+}
